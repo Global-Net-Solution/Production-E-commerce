@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-[220px] items-center w-full">
     <div
-      class="absolute left-5 z-[999999] bg-white ml-5 min-w-10 min-h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
+      class="absolute top-[40%] left-7 z-[999999] bg-white ml-5 min-w-10 min-h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
       v-if="!categories?.length < 12 && this.pageNumber > 1 && from != 'all'"
       @click="prev"
     >
@@ -11,14 +11,14 @@
         <i class="fa-solid fa-angle-left"></i>
       </button>
     </div>
-    <Push :appear="true" v-if="animationType === 'push'">
+    <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="flex items-center justify-start gap-10 overflow-x-hidden slider px-28 relative z-10 w-[95%]"
+        class="w-full flex items-center justify-start gap-10 overflow-x-hidden slider px-28 relative z-10"
         :class="{ 'flex-wrap w-full': from == 'all' }"
       >
-        <!-- {{ colors }} -->
+        <!-- {{ colors.length }} -->
         <Slide
-          v-for="item in colors"
+          v-for="item in paginatedColors"
           :key="item.id"
           :Image="getImageUrl(item.src)"
           :name="item.name"
@@ -28,9 +28,9 @@
       </div>
     </Push>
     <div
-      v-if="!categories?.length < 12 && from != 'all'"
+      v-if="!categories?.length < 12 && from != 'all'&&pageNumber < pageCount"
       @click="next"
-      class="absolute right-5 z-[999999]"
+      class="absolute right-3 z-[999999] top-[40%]"
     >
       <button
         class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md mr-5"
@@ -52,7 +52,7 @@ export default {
     from: String,
   },
   mounted() {
-    console.log("color" + this.colors);
+    // console.log("color" + this.colors);
   },
   components: {
     Slide,
@@ -63,8 +63,9 @@ export default {
       categories: null,
       pageNumber: 1,
       animationType: "push",
-      show: false,
+      show: true,
       colors: colorData.colors,
+      pageSize: 9,
     };
   },
 
@@ -73,15 +74,21 @@ export default {
       this.show = !this.show;
     },
     next() {
-      this.pageNumber = this.pageNumber + 1;
-      this.fetchCategories(this.pageNumber);
-      this.show = false;
+      if (this.pageNumber < this.pageCount) {
+        this.pageNumber = this.pageNumber + 1;
+        this.show = false;
+        setTimeout(() => {
+          this.show = true;
+        }, 200);
+      }
     },
     prev() {
       if (this.pageNumber > 1) {
         this.pageNumber = this.pageNumber - 1;
-        this.fetchCategories(this.pageNumber);
         this.show = false;
+        setTimeout(() => {
+          this.show = true;
+        }, 200);
       }
     },
     GoToProducts() {
@@ -94,6 +101,17 @@ export default {
         imagePath;
 
       return url;
+    },
+  },
+  computed: {
+    paginatedColors() {
+      const start = (this.pageNumber - 1) * this.pageSize;
+      const end = Math.min(start + this.pageSize, this.colors.length);
+      return this.colors?.slice(start, end);
+    },
+
+    pageCount() {
+      return Math.ceil(this.colors.length / this.pageSize);
     },
   },
 };
