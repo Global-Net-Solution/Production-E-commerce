@@ -1,0 +1,7 @@
+{
+  "genders": [
+    { "id": 1, "name": "Women" },
+    { "id": 2, "name": "men" },
+    { "id": 3, "name": "unisex" }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "SiteName": "Royal Scrubs",
+  "SearchPlaceholder": "Search...",
+  "Menu": {
+    "Categories": "Categories",
+    "Electronics": "Electronics",
+    "Leisure": "Leisure",
+    "CollectablesAndArt": "Collectables & Art",
+    "HomeAndGarden": "Home & Garden",
+    "ToysAndHobbies": "Toys & Hobbies",
+    "SportingGoods": "Sporting Goods",
+    "HealthAndBeauty": "Health & Beauty",
+    "Motors": "Motors",
+    "Sell": "Sell",
+    "TodaysDeals": "Today's Deals"
+  },
+  "BuyMenu": {
+    "title": "Buy",
+    "Registration": "Registration",
+    "Protection": "Shopin Buyer Protection",
+    "Help": "buying help"
+  },
+  "about": {
+    "title": "About Shopin",
+    "info": "Company info",
+    "news": "News",
+    "Careers": "Careers",
+    "Policies": "Policies"
+  },
+  "help": {
+    "title": "Help & Contact",
+    "topics": "Help topics ",
+    "Contact": "Contact us"
+  }
+}

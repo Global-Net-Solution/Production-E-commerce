@@ -1,0 +1,35 @@
+{
+  "SiteName": "Shopin",
+  "SearchPlaceholder": "ابحث...",
+  "Menu": {
+    "Categories": "الفئات",
+    "Electronics": "الإلكترونيات",
+    "Leisure": "الترفيه",
+    "CollectablesAndArt": "المقتنيات والفن",
+    "HomeAndGarden": "المنزل والحديقة",
+    "ToysAndHobbies": "الألعاب والهوايات",
+    "SportingGoods": "السلع الرياضية",
+    "HealthAndBeauty": "الصحة والجمال",
+    "Motors": "المركبات",
+    "Sell": "بيع",
+    "TodaysDeals": "عروض اليوم"
+  },
+  "BuyMenu": {
+    "title": "بيع",
+    "Registration": "تسجيل",
+    "Protection": "حماية المشتري",
+    "Help": "مساعدة"
+  },
+  "about": {
+    "title": "عنا",
+    "info": "معلومات",
+    "news": "اخبار",
+    "Careers": "وظائف",
+    "Policies": "سياسات"
+  },
+  "help": {
+    "title": "المساعدة والاتصال",
+    "topics": "مواضيع المساعدة",
+    "Contact": "اتصل بنا"
+  }
+}

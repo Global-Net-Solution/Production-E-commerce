@@ -1,0 +1,49 @@
+{
+  "mainCategories": [
+    {
+      "id": 1,
+      "name": "Scrub",
+      "subCategories": [
+        {
+          "id": 1,
+          "name": "Scrub Tops",
+          "src" : "top.png"
+        },
+        {
+          "id": 2,
+          "name": "Scrub Pants",
+          "src" : "pants.png"
+
+        },
+        {
+          "id": 3,
+          "name": "Scrub Leggings",
+          "src" : "pantsL.png"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Outerwear",
+      "subCategories": [
+        {
+          "id": "1",
+          "name": "jackets"
+          ,"src" : "Jackets.png"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Layering Essentials",
+      "subCategories": [
+        {
+          "id": 1,
+          "name": "Lab Coats"
+          ,"src" : "labCoat.png"
+        }
+      ]
+    },
+    { "id": 4, "name": "Accessories" }
+  ]
+}

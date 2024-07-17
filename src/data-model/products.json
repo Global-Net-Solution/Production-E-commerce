@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "id": "",
+      "category-id": "",
+      "skus": "",
+      "name": "",
+      "decription:": "",
+      "cover-img": "",
+      "model": "",
+      "fit": "",
+      "price": "",
+      "discount": "",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    }
+  ]
+}
