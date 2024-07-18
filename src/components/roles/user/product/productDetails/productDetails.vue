@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-3 ">
+  <div class="flex flex-col gap-3">
     <p>
       Lorem ipsum dolor sit amet consectetur. Pellentesque tellus volutpat vitae
       elit.
@@ -41,7 +41,26 @@
             <p class="text-customGray-400 text-sm">Color:</p>
             <p class="text-sm font-semibold">Red</p>
           </div>
-          <ul class="flex gap-3">
+          <ul class="flex gap-2 flex-wrap w-full">
+            <li
+              v-for="color in colors"
+              :key="color.id"
+              :title="color.name"
+              @click="colorsSelected(color)"
+              class="rounded-full p-1 relative border !border-transparent hover:!border-[#000]"
+              :class="{
+                '!border-[#000] checkColor': colorsSelectedList.some(
+                  (ele) => ele.id === color.id
+                ),
+              }"
+            >
+              <p
+                class="w-5 h-5 rounded-full p-2"
+                :style="{ backgroundColor: color.code }"
+              ></p>
+            </li>
+          </ul>
+          <!-- <ul class="flex gap-3">
             <li>
               <p class="w-6 h-6 bg-red-950 rounded-full p-2"></p>
             </li>
@@ -51,13 +70,12 @@
             <li>
               <p class="w-6 h-6 bg-[#EB84B0] rounded-full p-2"></p>
             </li>
-          </ul>
+          </ul> -->
         </li>
         <li>
           <div class="contryInfo flex items-center gap-6">
             <p class="text-customGray-400 text-sm">Model:</p>
             <p class="text-sm font-semibold">Lorem Lorem</p>
-          
           </div>
         </li>
         <li>
@@ -109,15 +127,32 @@
           </ul>
         </li>
       </ul>
-     
     </div>
   </div>
 </template>
 
 <script>
+import colors from "../../../../../data-model/colors.json";
 export default {
-  setup() {
-    return {};
+  data() {
+    return {
+      colors: colors.colors,
+      colorsSelectedList: [],
+    };
+  },
+  methods: {
+    colorsSelected(color) {
+      const exists = this.colorsSelectedList?.some(
+        (colorselected) => colorselected.id == color.id
+      );
+      if (!exists) {
+        this.colorsSelectedList.push(color);
+      } else {
+        this.colorsSelectedList = this.colorsSelectedList.filter(
+          (colorselected) => colorselected.id !== color.id
+        );
+      }
+    },
   },
 };
 </script>
@@ -125,5 +160,19 @@ export default {
 <style>
 .k-input-md {
   padding: 0 !important;
+}
+.checkColor::after {
+  content: "✓";
+  position: absolute;
+  top: 3.5px;
+  left: 3px;
+  font-size: 10px;
+  background-color: #eeeeee78;
+  width: 22px;
+  height: 21px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

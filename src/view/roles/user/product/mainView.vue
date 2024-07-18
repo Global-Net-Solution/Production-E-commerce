@@ -1,7 +1,8 @@
 <template>
   <div class="px-28 py-10">
+    {{}}
     <div class="w-full flex gap-10 h-screen">
-      <imgPreview class="w-[50%]" />
+      <imgPreview class="w-[50%]" :colors="product.colors" />
       <productDetails class="w-[30%] h-screen" />
       <!-- <paymentInfo class="" /> -->
     </div>
@@ -16,10 +17,17 @@ import imgPreview from "../../../../components/roles/user/product/imgPreview/img
 import productDetails from "../../../../components/roles/user/product/productDetails/productDetails.vue";
 import paymentInfo from "../../../../components/roles/user/product/paymentInfo/paymentInfo.vue";
 import productDescription from "../../../../components/roles/user/product/productDescription/productDescription.vue";
-
+import products from "../../../../data-model/products.json";
 export default {
-  setup() {
-    return {};
+  created() {
+    const productId = this.$route.params.id;
+    this.product = this.products.find((product) => product.id == productId);
+  },
+  data() {
+    return {
+      products: products.products,
+      product: null,
+    };
   },
   components: {
     imgPreview,
