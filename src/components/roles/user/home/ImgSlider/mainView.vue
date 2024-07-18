@@ -28,7 +28,7 @@
       </div>
     </Push>
     <div
-      v-if="!categories?.length < 12 && from != 'all'&&pageNumber < pageCount"
+      v-if="!categories?.length < 12 && from != 'all' && pageNumber < pageCount"
       @click="next"
       class="absolute right-3 z-[999999] top-[40%]"
     >
@@ -44,9 +44,10 @@
 <script>
 import colorData from "../../../../../data-model/colors.json";
 import Slide from "./Slide/Slide.vue";
-// import imageSlider from "../../../../../assets/dataImg/colors/";
 import { Push } from "@progress/kendo-vue-animation";
-
+import {
+  p1
+} from "../../../../../images.js";
 export default {
   props: {
     from: String,
@@ -60,6 +61,7 @@ export default {
   },
   data() {
     return {
+      p1,
       categories: null,
       pageNumber: 1,
       animationType: "push",
@@ -74,7 +76,7 @@ export default {
       this.show = !this.show;
     },
     next() {
-      console.log('next')
+      console.log("next");
       if (this.pageNumber < this.pageCount) {
         this.pageNumber = this.pageNumber + 1;
         this.show = false;
@@ -96,11 +98,7 @@ export default {
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
-      var url =
-       
-        "../../../../../../src/assets/dataImg/colors/" +
-        imagePath;
-
+      var url = this.p1;
       return url;
     },
   },

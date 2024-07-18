@@ -4,7 +4,7 @@
       <img
         :src="heroImg"
         alt="hero-section-Img"
-        class="w-full h-[450px] object-cover"
+        class="w-full h-[450px] border-b object-cover"
       />
     </div>
     <scrollView class="basis-[60%]" />
@@ -12,7 +12,7 @@
       <img
         :src="heroImg"
         alt="hero-section-Img"
-        class="w-full h-[450px] object-cover"
+        class="w-full h-[450px] border-b object-cover"
       />
     </div>
   </div>
@@ -20,7 +20,7 @@
 
 <script>
 import scrollView from "./scrollView/mainView.vue";
-import heroImg from "../../../../../assets/img/Hero-section-img.jpeg";
+import heroImg from "../../../../../assets/img/3.png";
 export default {
   data() {
     return {
