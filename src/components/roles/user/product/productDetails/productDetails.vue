@@ -57,12 +57,7 @@
           <div class="contryInfo flex items-center gap-6">
             <p class="text-customGray-400 text-sm">Model:</p>
             <p class="text-sm font-semibold">Lorem Lorem</p>
-            <!-- <base-combobox
-              :data="countries"
-              v-model="country"
-              class="bg-white h-10 bg-boxShadow-custom !w-[90%]"
-              :placeholder="'model'"
-            /> -->
+          
           </div>
         </li>
         <li>
@@ -114,19 +109,7 @@
           </ul>
         </li>
       </ul>
-      <!-- <div class="flex gap-5 mt-5">
-        <base-button
-          :size="'large'"
-          class="!bg-primary-500 !text-white !rounded-md !px-5"
-          >Add to cart</base-button
-        >
-        <base-button
-          :size="'large'"
-          class="!bg-white !border !border-primary-500 !rounded-md !text-primary-500"
-        >
-          <i class="fa-regular fa-heart mr-3"></i>Add to wishlist</base-button
-        >
-      </div> -->
+     
     </div>
   </div>
 </template>

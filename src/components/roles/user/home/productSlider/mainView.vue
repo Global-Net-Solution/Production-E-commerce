@@ -1,21 +1,9 @@
 <template>
   <div class="flex w-full items-center">
-    <!-- <div
-      v-if="!products?.length < 12 && this.pageNumber > 1 && from != 'all'"
-      class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
-      @click="prev"
-    >
-      <button
-        class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md"
-      >
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
-    </div> -->
     <Push :appear="show" v-if="animationType === 'push'">
       <div
         class="flex min-h-[220px] items-center w-[100%] gap-4 px-10 flex-wrap"
       >
-        <!-- {{ paginatedProducts[0].colors[0].color}} -->
         <card
           v-for="(product, inx) in paginatedProducts"
           :key="inx"
@@ -28,15 +16,7 @@
         />
       </div>
     </Push>
-    <!-- <div>
-      <button
-        v-if="!products?.length < 12 && from != 'all' && pageNumber < pageCount"
-        @click="next"
-        class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md mr-5"
-      >
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
-    </div> -->
+  
   </div>
 </template>
 
@@ -104,11 +84,28 @@ export default {
         }, 200);
       }
     },
+    // importAllImages() {
+    //   const images = import.meta.glob('@/assets/*.jpg');
+    //   const webpImages = import.meta.glob('@/assets/*.webp');
+    //   for (const path in images) {
+    //     images[path]().then((mod) => {
+    //       const fileName = path.split('/').pop();
+    //       this.$set(this.imageMap, fileName, mod.default);
+    //     });
+    //   }
+    //   for (const path in webpImages) {
+    //     webpImages[path]().then((mod) => {
+    //       const fileName = path.split('/').pop();
+    //       this.$set(this.imageMap, fileName, mod.default);
+    //     });
+    //   }
+    // },
     getImageUrl(imagePath) {
       var url =
         new URL("", import.meta.url).origin +
         "/src/assets/dataImg/products/" +
         imagePath;
+
 
       return url;
     },

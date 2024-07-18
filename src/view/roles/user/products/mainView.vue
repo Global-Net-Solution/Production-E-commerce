@@ -53,44 +53,45 @@
           Show More <i class="fa-solid fa-chevron-down"></i>
         </p>
       </div>
-      <div class="w-full">
-        <h2 class="my-5">Price Range (USD)</h2>
-        <slider
-          calss="w-full"
-          :step="1"
-          :default-value="{ start: 1, end: 10 }"
-          :min="1"
-          :max="10"
-        >
-          <slider-label :position="1">ُ$10</slider-label>
 
-          <slider-label :position="10">$200</slider-label>
-        </slider>
-      </div>
       <div class="w-full my-8">
         <h2 class="text-lg mb-3">Color</h2>
-        <ul>
-          <li>
-            <p class="w-6 h-6 bg-red-950 rounded-full p-2"></p>
+        <Tooltip :position="position" :anchor-element="anchor"> </Tooltip>
+        <ul class="flex gap-2 flex-wrap w-full">
+          <li
+            v-for="color in colors"
+            :key="color.id"
+            :title="color.name"
+            @click="colorsSelected(color)"
+            class="rounded-full p-1 relative  border !border-transparent hover:!border-[#000]"
+            :class="{
+              '!border-[#000] checkColor': colorsSelectedList.some(
+                (ele) => ele.id === color.id
+              ),
+            }"
+          >
+            <p
+              class="w-5 h-5 rounded-full p-2"
+              :style="{ backgroundColor: color.code }"
+            ></p>
           </li>
         </ul>
       </div>
       <div class="w-full my-8">
         <h2 class="text-lg mb-3">Size</h2>
-        <ul>
-          <li class="text-sm mb-2">XS</li>
-          <li class="text-sm mb-2">S</li>
-          <li class="text-sm mb-2">M</li>
-          <li class="text-sm mb-2">L</li>
-        </ul>
-      </div>
-      <div class="w-full my-8">
-        <h2 class="text-lg mb-3">Discount</h2>
-        <ul>
-          <li class="text-sm mb-2">10% Off or More</li>
-          <li class="text-sm mb-2">25% Off or More</li>
-          <li class="text-sm mb-2">50% Off or More</li>
-          <li class="text-sm mb-2">Off or More</li>
+        <ul class="flex gap-1 flex-wrap w-full items-center">
+          <li
+            class="text-sm mb-2 border text-center w-10 px-2 py-1 rounded hover:bg-gray-100 hover:text-black duration-100 cursor-pointer"
+            v-for="size in sizes"
+            :key="size.id"
+            @click="sizesSelected(size)"
+            :class="{
+              'bg-black text-white hover:text-white hover:bg-black':
+                sizeSelectedList.some((ele) => ele.id === size.id),
+            }"
+          >
+            {{ size.name }}
+          </li>
         </ul>
       </div>
     </div>
@@ -177,6 +178,9 @@ import card from "../../../../components/roles/user/home/productCard/mainView.vu
 import { Pager } from "@progress/kendo-vue-data-tools";
 import categories from "../../../../data-model/categoreis.json";
 import colors from "../../../../data-model/colors.json";
+import sizes from "../../../../data-model/sizes.json";
+import { Tooltip } from "@progress/kendo-vue-tooltip";
+
 export default {
   data() {
     return {
@@ -193,6 +197,10 @@ export default {
       width: 768,
       categories: categories.mainCategories,
       subCategoriesChecked: [],
+      colorsSelectedList: [],
+      sizeSelectedList: [],
+      colors: colors.colors,
+      sizes: sizes.size,
     };
   },
   mounted() {
@@ -251,13 +259,36 @@ export default {
           });
         }
       });
-
-      console.log("current Checked", this.categories);
+    },
+    colorsSelected(color) {
+      const exists = this.colorsSelectedList?.some(
+        (colorselected) => colorselected.id == color.id
+      );
+      if (!exists) {
+        this.colorsSelectedList.push(color);
+      } else {
+        this.colorsSelectedList = this.colorsSelectedList.filter(
+          (colorselected) => colorselected.id !== color.id
+        );
+      }
+    },
+    sizesSelected(size) {
+      const exists = this.sizeSelectedList?.some(
+        (sizeselected) => sizeselected.id == size.id
+      );
+      if (!exists) {
+        this.sizeSelectedList.push(size);
+      } else {
+        this.sizeSelectedList = this.sizeSelectedList.filter(
+          (sizeselected) => sizeselected.id !== size.id
+        );
+      }
     },
   },
   components: {
     card,
     Pager,
+    Tooltip,
   },
 };
 </script>
@@ -294,5 +325,19 @@ export default {
 .k-pager-info {
   order: -1 !important;
   flex: 0 !important;
+}
+.checkColor::after {
+  content: "✓";
+  position: absolute;
+  top: 3.5px;
+  left: 3px;
+  font-size: 10px;
+  background-color: #eeeeee78;
+  width: 22px;
+  height: 21px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
