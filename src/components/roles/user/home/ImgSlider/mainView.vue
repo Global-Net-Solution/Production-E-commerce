@@ -45,9 +45,7 @@
 import colorData from "../../../../../data-model/colors.json";
 import Slide from "./Slide/Slide.vue";
 import { Push } from "@progress/kendo-vue-animation";
-import {
-  p1
-} from "../../../../../images.js";
+import { p1 } from "../../../../../images.js";
 export default {
   props: {
     from: String,
@@ -98,7 +96,7 @@ export default {
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
-      var url = this.p1;
+      var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
       return url;
     },
   },
