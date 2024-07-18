@@ -97,14 +97,7 @@
               :placeholder="'Country'"
             />
           </div>
-          <div>
-            <base-combobox
-              :data="countries"
-              v-model="country"
-              class="bg-white h-10 bg-boxShadow-custom !w-[90%]"
-              :placeholder="'Currency'"
-            />
-          </div>
+         
         </div>
       </div>
       <div class="w-full text-center py-5 inter text-xs text-customGray-500">

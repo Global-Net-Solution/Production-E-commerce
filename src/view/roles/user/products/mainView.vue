@@ -6,11 +6,6 @@
         <p class="text-xs cursor-pointer text-red-500">Clear All Filter</p>
       </div>
       <div class="w-full flex justify-between items-center relative my-8">
-        <!-- <img
-          :src="searchIcon"
-          alt=""
-          class="w-6 h-6 absolute top-3 left-[10px] z-10"
-        /> -->
         <KInput
           :style="{ width: '100%' }"
           :size="'small'"
@@ -22,48 +17,39 @@
       <div class="w-full">
         <h1>Category</h1>
         <ul class="my-5">
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox
-              :default-checked="false"
-              :label="'Automotive & Motorcycle'"
-            />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox :default-checked="false" :label="'Baby'" />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox
-              :default-checked="false"
-              :label="'Baby Clothing & Accessories'"
-            />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox :default-checked="false" :label="'Camera & Photo'" />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox
-              :default-checked="false"
-              :label="'Cell Phones & Accessories'"
-            />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox :default-checked="false" :label="'Boys’ Fashion'" />
-            <div><i class="fa-solid fa-plus"></i></div>
-          </li>
-          <li class="flex items-center justify-between text-sm mb-3">
-            <checkbox
-              :default-checked="false"
-              :label="'Collectibles & Fine Art'"
-            />
-            <div><i class="fa-solid fa-plus"></i></div>
+          <li
+            class="text-sm mb-3"
+            v-for="category in categories"
+            :key="category.id"
+          >
+            <div class="flex items-center justify-between">
+              <checkbox
+                :value="category.isChecked"
+                :label="category.name"
+                @click="changeMainCategoryChecked(category)"
+              />
+              <div @click="category.isOpened = !category.isOpened">
+                <i class="fa-solid fa-plus"></i>
+              </div>
+            </div>
+
+            <ul
+              class="flex flex-col justify-start px-5 mt-1"
+              v-for="subCategory in category.subCategories"
+              :key="subCategory.id"
+              v-if="category.isOpened"
+            >
+              <checkbox
+                class="mb-1"
+                :value="subCategory.isChecked"
+                :label="subCategory.name"
+                @change="subCategory.isChecked = !subCategory.isChecked"
+                @click="changeSubCategoryChecked(category, subCategory)"
+              />
+            </ul>
           </li>
         </ul>
-        <p class="text-xs">
+        <p class="text-xs" v-if="categories.length > 5">
           Show More <i class="fa-solid fa-chevron-down"></i>
         </p>
       </div>
@@ -84,9 +70,9 @@
       <div class="w-full my-8">
         <h2 class="text-lg mb-3">Color</h2>
         <ul>
-          <li class="text-sm mb-2">Red</li>
-          <li class="text-sm mb-2">Black</li>
-          <li class="text-sm mb-2">yellow</li>
+          <li>
+            <p class="w-6 h-6 bg-red-950 rounded-full p-2"></p>
+          </li>
         </ul>
       </div>
       <div class="w-full my-8">
@@ -107,16 +93,6 @@
           <li class="text-sm mb-2">Off or More</li>
         </ul>
       </div>
-      <!-- <div class="w-full my-8">
-        <h2 class="text-lg mb-3">Ratings</h2>
-        <ul>
-          <li class="text-sm mb-2">4 Stars or More</li>
-          <li class="text-sm mb-2">3 Stars or More</li>
-          <li class="text-sm mb-2">2 Stars or More</li>
-          <li class="text-sm mb-2">1 Star or More</li>
-          <li class="text-sm mb-2">0 Star or More</li>
-        </ul>
-      </div> -->
     </div>
     <div class="basis-[80%]">
       <div class="w-full h-16 border-b px-2 flex">
@@ -199,6 +175,8 @@
 import searchIcon from "../../../../assets/icons/h-search.svg";
 import card from "../../../../components/roles/user/home/productCard/mainView.vue";
 import { Pager } from "@progress/kendo-vue-data-tools";
+import categories from "../../../../data-model/categoreis.json";
+import colors from "../../../../data-model/colors.json";
 export default {
   data() {
     return {
@@ -213,7 +191,69 @@ export default {
       total: 200,
       pageSizeDefs: [5, 10, 20],
       width: 768,
+      categories: categories.mainCategories,
+      subCategoriesChecked: [],
     };
+  },
+  mounted() {
+    this.categories = this.categories.map((category) => {
+      return {
+        ...category,
+        isOpened: false,
+        isChecked: false,
+        subCategories: category?.subCategories?.map((subCategory) => {
+          return {
+            ...subCategory,
+            isChecked: false,
+          };
+        }),
+      };
+    });
+  },
+  methods: {
+    changeMainCategoryChecked(category) {
+      category.isChecked = !category.isChecked;
+      category.subCategories.forEach((cat) => {
+        cat.isChecked = category.isChecked;
+      });
+      category.isOpened = !category.isOpened;
+
+      if (category.isChecked) {
+        category.subCategories?.map((subCategory) => {
+          const exists = this.subCategoriesChecked?.some(
+            (category) => category.id == subCategory.id
+          );
+
+          if (!exists) {
+            this.subCategoriesChecked.push(subCategory);
+          }
+        });
+      } else {
+        category.subCategories?.map((subCategory) => {
+          const exists = this.subCategoriesChecked?.some(
+            (category) => category.id === subCategory.id
+          );
+          if (exists) {
+            this.subCategoriesChecked.pop(subCategory);
+          }
+        });
+      }
+    },
+    changeSubCategoryChecked(category, subCategories) {
+      subCategories.isChecked = !subCategories.isChecked;
+      this.categories.forEach((item) => {
+        if (item.id == category.id) {
+          item.subCategories.forEach((ele) => {
+            if (ele.id == subCategories.id) {
+              console.log("hit");
+              ele.isChecked = subCategories.isChecked;
+            }
+          });
+        }
+      });
+
+      console.log("current Checked", this.categories);
+    },
   },
   components: {
     card,

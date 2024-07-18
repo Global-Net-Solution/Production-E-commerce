@@ -1,15 +1,7 @@
 <template>
   <div class="h-[400px] w-full relative">
     <div>
-      <!-- <div
-        class="absolute right-2 top-2 w-8 h-8 bg-white rounded-full text-center p-1 cursor-pointer z-10"
-        v-if="!faviorate"
-        @click="AddToWhishlist"
-        :class="{ 'animate-icon': isAnimating }"
-        @animationend="isAnimating = false"
-      >
-        <i class="fa-regular fa-heart"></i>
-      </div> -->
+
       <div
         class="absolute right-2 top-2 w-8 h-8 bg-white rounded-full text-center p-1 cursor-pointer z-10"
         v-if="faviorate"
