@@ -3,7 +3,7 @@
     <div>
 
       <div
-        class="absolute right-2 top-2 w-8 h-8 bg-white rounded-full text-center p-1 cursor-pointer z-10"
+        class="absolute z-10 w-8 h-8 p-1 text-center bg-white rounded-full cursor-pointer right-2 top-2"
         v-if="faviorate"
         @click="AddToWhishlist"
         :class="{ 'animate-icon': isAnimating }"
@@ -14,25 +14,18 @@
     </div>
     <div class="w-[390px] h-[560px]" @click="GoToProduct(id)">
       <div class="w-full h-full">
-        <img :src="img" alt="" class="rounded-md w-full h-full object-cover" />
+        <img :src="getImageUrl(product?.src)" alt="" class="object-cover w-full h-full rounded-md" />
       </div>
       <div>
         <div class="py-3">
-          <h4>{{ name }}</h4>
+          <h4>{{ product?.name }}</h4>
           <div class="flex items-center gap-1">
-            <!-- <rating
-              :star="star"
-              :disabled="true"
-              :maxstars="maxStars"
-              starsize="md"
-            /> -->
-            <!-- <span class="text-xs">(100+)</span> -->
           </div>
           <div class="flex flex-col justify-between">
             <div class="flex flex-col" v-if="discount">
               <div class="flex items-center gap-5">
-                <p class="line-through text-customGray-400 text-sm">
-                  {{ discount }}
+                <p class="text-sm line-through text-customGray-400">
+                  {{ product?.discount }}
                 </p>
                 <p
                   class="bg-customRed-500 text-white rounded-md px-1 py-[2px] font-thin text-xs"
@@ -41,17 +34,10 @@
                 </p>
               </div>
             </div>
-            <div class="flex mt-1 justify-between items-center">
+            <div class="flex items-center justify-between mt-1">
               <div>
-                <p class="text-base">{{ price }}</p>
+                <p class="text-base">{{ product?.price }}</p>
               </div>
-              <!-- <base-button
-                :size="'small'"
-                class="!bg-white !border !border-primary-500 !rounded-lg"
-                ><i
-                  class="fa-solid fa-cart-shopping text-primary-500 px-1 py-1 pt-2 text-base"
-                ></i
-              ></base-button> -->
             </div>
           </div>
         </div>
@@ -71,6 +57,7 @@ export default {
     name: String,
     price: String,
     discount: String,
+    product:Object,
   },
   data() {
     return {
@@ -92,6 +79,13 @@ export default {
     GoToProduct(id) {
       console.log(id);
       this.$router.push(`/product/${id}`);
+    },
+    getImageUrl(imagePath) {
+      var url =
+        new URL("", import.meta.url).origin +
+        "/assets/assets/dataImg/products/" +
+        imagePath;
+      return url;
     },
   },
 };

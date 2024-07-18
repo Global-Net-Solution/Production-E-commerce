@@ -1,9 +1,9 @@
 <template>
-  <div class="px-28 flex justify-between">
+  <div class="flex justify-between px-28">
     <div class="basis-[18%]">
-      <!-- <div class="w-full flex justify-between items-center">
+      <!-- <div class="flex items-center justify-between w-full">
         <p
-          class="text-xs cursor-pointer text-red-500"
+          class="text-xs text-red-500 cursor-pointer"
           v-if="subCategoriesChecked.length > 0"
         >
           Clear All Filter
@@ -12,7 +12,7 @@
 
       <div class="w-full">
         <div
-          class="w-full flex justify-between items-center relative  mb-5 -left-2"
+          class="relative flex items-center justify-between w-full mb-5 -left-2"
         >
           <KInput
             :style="{ width: '100%' }"
@@ -25,14 +25,14 @@
         <h1>Category</h1>
         <ul class="my-5">
           <li
-            class="text-sm mb-3"
+            class="mb-3 text-sm"
             v-for="category in categories"
             :key="category.id"
           >
             <div class="flex items-center justify-between">
               <li
                 @click="changeMainCategoryChecked(category)"
-                class="flex items-center cursor-pointer gap-1"
+                class="flex items-center gap-1 cursor-pointer"
               >
                 <checkbox class="mb-1" :value="category.isChecked" />
                 <p>{{ category.name }}</p>
@@ -51,7 +51,7 @@
             >
               <li
                 @click="changeSubCategoryChecked(category, subCategory)"
-                class="flex items-center cursor-pointer gap-1"
+                class="flex items-center gap-1 cursor-pointer"
               >
                 <checkbox class="mb-1" :value="subCategory.isChecked" />
                 <p>{{ subCategory.name }}</p>
@@ -65,9 +65,9 @@
       </div>
 
       <div class="w-full my-8">
-        <h2 class="text-lg mb-3">Color</h2>
+        <h2 class="mb-3 text-lg">Color</h2>
         <Tooltip :position="position" :anchor-element="anchor"> </Tooltip>
-        <ul class="flex gap-2 flex-wrap w-full">
+        <ul class="flex flex-wrap w-full gap-2">
           <li
             v-for="color in colors"
             :key="color.id"
@@ -81,17 +81,17 @@
             }"
           >
             <p
-              class="w-5 h-5 rounded-full p-2"
+              class="w-5 h-5 p-2 rounded-full"
               :style="{ backgroundColor: color.code }"
             ></p>
           </li>
         </ul>
       </div>
       <div class="w-full my-8">
-        <h2 class="text-lg mb-3">Size</h2>
-        <ul class="flex gap-1 flex-wrap w-full items-center">
+        <h2 class="mb-3 text-lg">Size</h2>
+        <ul class="flex flex-wrap items-center w-full gap-1">
           <li
-            class="text-sm mb-2 border text-center w-10 px-2 py-1 rounded hover:bg-gray-100 hover:text-black duration-100 cursor-pointer"
+            class="w-10 px-2 py-1 mb-2 text-sm text-center duration-100 border rounded cursor-pointer hover:bg-gray-100 hover:text-black"
             v-for="size in sizes"
             :key="size.id"
             @click="sizesSelected(size)"
@@ -106,11 +106,11 @@
       </div>
     </div>
     <div class="basis-[80%]">
-      <div class="w-full px-2 flex">
+      <div class="flex w-full px-2">
         <div class="basis-[50%] overflow-hidden">
           <ul class="flex gap-3">
             <li
-              class="w-fit px-2 py-1 text-sm bg-customGray-100 rounded-md hover:bg-customGray-200 cursor-pointer"
+              class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-100 hover:bg-customGray-200"
               v-for="item in subCategoriesChecked"
               :key="item.id"
             >
@@ -118,24 +118,18 @@
             </li>
           </ul>
         </div>
-        
       </div>
-      <div class="w-full px-2">
+      <div class="flex justify-end w-full px-2">
         <p class="text-xs text-customGray-400">234,567 results</p>
       </div>
-      <div class="flex min-h-[220px] items-center w-full gap-8 px-10 flex-wrap">
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
-        <card class="basis-[22%]" @click="GoToProduct" />
+      <div class="flex min-h-[220px] items-center w-full gap-7 px-10 flex-wrap">
+        <card
+          class="basis-[22%]"
+          @click="GoToProduct"
+          :product="product"
+          v-for="product in filteredProducts"
+          :key="product.id"
+        />
       </div>
       <div class="w-full px-2 py-5 contryInfo">
         <pager
@@ -162,6 +156,7 @@ import { Pager } from "@progress/kendo-vue-data-tools";
 import categories from "../../../../data-model/categoreis.json";
 import colors from "../../../../data-model/colors.json";
 import sizes from "../../../../data-model/sizes.json";
+import products from "../../../../data-model/products.json";
 import { Tooltip } from "@progress/kendo-vue-tooltip";
 
 export default {
@@ -184,6 +179,7 @@ export default {
       sizeSelectedList: [],
       colors: colors.colors,
       sizes: sizes.size,
+      products: products.products,
     };
   },
   mounted() {
@@ -281,6 +277,34 @@ export default {
     card,
     Pager,
     Tooltip,
+  },
+  computed: {
+    filteredProducts() {
+      return this.products.filter((product) => {
+        const hasSubCategoryMatch =
+          this.subCategoriesChecked.length > 0
+            ? product.subCategoryzId.some((subCat) =>
+                this.subCategoriesChecked.includes(subCat)
+              )
+            : false;
+        const hasColorMatch =
+          this.colorsSelectedList.length > 0
+            ? product.colors.some((color) =>
+                this.colorsSelectedList.includes(color.color)
+              )
+            : false;
+        const hasSizeMatch =
+          this.sizeSelectedList.length > 0
+            ? product.sizes.some((size) => this.sizeSelectedList.includes(size))
+            : false;
+
+        return (
+          (this.subCategoriesChecked.length === 0 || hasSubCategoryMatch) &&
+          (this.colorsSelectedList.length === 0 || hasColorMatch) &&
+          (this.sizeSelectedList.length === 0 || hasSizeMatch)
+        );
+      });
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full items-center justify-center">
+  <div class="flex items-center justify-center w-full">
     <Push :appear="show" v-if="animationType === 'push'">
       <div
         class="flex  items-center justify-center  w-[100%] gap-4 px-10 flex-wrap"
@@ -13,6 +13,7 @@
           :name="product.name"
           :price="product.price"
           :discount="product.discount"
+          :product="product"
         />
       </div>
     </Push>
