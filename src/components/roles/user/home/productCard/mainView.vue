@@ -22,15 +22,11 @@
     </div>
     <div class="w-full h-[60%]" @click="GoToProduct">
       <div class="w-full h-full">
-        <img
-          :src="productImg"
-          alt=""
-          class="rounded-md w-full h-full object-cover"
-        />
+        <img :src="img" alt="" class="rounded-md w-full h-full object-cover" />
       </div>
       <div>
         <div class="py-3">
-          <h4>Product Name</h4>
+          <h4>{{ name }}</h4>
           <div class="flex items-center gap-1">
             <!-- <rating
               :star="star"
@@ -38,12 +34,14 @@
               :maxstars="maxStars"
               starsize="md"
             /> -->
-            <span class="text-xs">(100+)</span>
+            <!-- <span class="text-xs">(100+)</span> -->
           </div>
           <div class="flex flex-col justify-between">
-            <div class="flex flex-col">
+            <div class="flex flex-col" v-if="discount">
               <div class="flex items-center gap-5">
-                <p class="line-through text-customGray-400 text-sm">$999.00</p>
+                <p class="line-through text-customGray-400 text-sm">
+                  {{ discount }}
+                </p>
                 <p
                   class="bg-customRed-500 text-white rounded-md px-1 py-[2px] font-thin text-xs"
                 >
@@ -53,7 +51,7 @@
             </div>
             <div class="flex mt-1 justify-between items-center">
               <div>
-                <p class="text-base">$899.00</p>
+                <p class="text-base">{{ price }}</p>
               </div>
               <!-- <base-button
                 :size="'small'"
@@ -75,6 +73,12 @@
 import productImg from "../../../../../assets/img/productImg.jpeg";
 import rating from "../../../../../components/rating/rating.vue";
 export default {
+  props: {
+    img: String,
+    name: String,
+    price: String,
+    discount: String,
+  },
   data() {
     return {
       productImg,

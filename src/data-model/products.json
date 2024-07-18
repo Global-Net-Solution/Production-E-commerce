@@ -1,16 +1,147 @@
 {
   "products": [
     {
-      "id": "",
-      "category-id": "",
+      "id": "1",
+      "subCategoryzId": [],
       "skus": "",
-      "name": "",
-      "decription:": "",
-      "cover-img": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p1.jpg",
       "model": "",
       "fit": "",
-      "price": "",
-      "discount": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p2.jpg",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p3.jpg",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p4.webp",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p1.jpg",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p2.jpg",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p3.jpg",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
+      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "colors": [
+        {
+          "color": "",
+          "imgs": ["", ""]
+        }
+      ]
+    },    {
+      "id": "1",
+      "subCategoryzId": [],
+      "skus": "",
+      "name": "Leon Three-Pocket Scrub Top",
+      "decription:": "Leon Three-Pocket Scrub Top",
+      "src": "p4.webp",
+      "model": "",
+      "fit": "",
+      "price": "$500",
+      "discount": "999",
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
