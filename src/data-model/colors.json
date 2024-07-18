@@ -2,123 +2,63 @@
   "colors": [
     {
       "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "name": "Navy",
+      "src": "navy.avif",
+      "code": "#1d1e3a"
     },
     {
       "id": 2,
       "name": "DEEP REEF",
-      "src": "DEEPREEF.avif"
+      "src": "DEEPREEF.avif",
+      "code": "#012A4A"
     },
     {
       "id": 3,
       "name": "Black",
-      "src": "black.avif"
+      "src": "black.avif",
+      "code": "#101010"
     },
     {
       "id": 4,
       "name": "Royal blue",
-      "src": "royalBlue.avif"
+      "src": "royalBlue.avif",
+      "code": "#006EE7"
     },
     {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 5,
+      "name": "Moss",
+      "src": "Moss.avif",
+      "code": "#4C564B"
     },
     {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 6,
+      "name": "CEIL BLUE",
+      "src": "CEILBLUE.avif",
+      "code": "#7CB4E7"
     },
     {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 7,
+      "name": "Carousel",
+      "src": "Carousel.avif",
+      "code": "#48474C"
     },
     {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 8,
+      "name": "Pink Sand",
+      "src": "PinkSand.avif",
+      "code": "#E7BFBD"
     },
     {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 9,
+      "name": "Earth",
+      "src": "Earth.webp",
+      "code": "#835731"
     },
     {
-      "id": 1,
-      "name": "navy12",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
-    },
-    {
-      "id": 1,
-      "name": "navy",
-      "src": "navy.avif"
+      "id": 10,
+      "name": "Hunter green",
+      "src": "Hunter_Green.avif",
+      "code": "#004E3E"
     }
   ]
 }

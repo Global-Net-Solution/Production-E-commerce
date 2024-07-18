@@ -14,13 +14,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
     },
     {
-      "id": "1",
+      "id": "2",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -33,13 +33,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
     },
     {
-      "id": "1",
+      "id": "3",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -52,16 +52,17 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
-    },    {
-      "id": "1",
+    },
+    {
+      "id": "4",
       "subCategoryzId": [],
       "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
+      "name": "Cobaki Scrub Jacket",
+      "decription:": "Cobaki Scrub Jacket",
       "src": "p4.webp",
       "model": "",
       "fit": "",
@@ -70,13 +71,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
     },
     {
-      "id": "1",
+      "id": "5",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -89,13 +90,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
     },
     {
-      "id": "1",
+      "id": "6",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -108,13 +109,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
     },
     {
-      "id": "1",
+      "id": "7",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -127,12 +128,13 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
-    },    {
-      "id": "1",
+    },
+    {
+      "id": "8",
       "subCategoryzId": [],
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
@@ -145,7 +147,7 @@
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
-          "color": "",
+          "color": 1,
           "imgs": ["", ""]
         }
       ]
