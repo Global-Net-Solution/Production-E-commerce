@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[400px] w-full relative">
+  <div class="h-[650px] w-full relative">
     <div>
 
       <div
@@ -12,7 +12,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="w-full h-[60%]" @click="GoToProduct(id)">
+    <div class="w-[390px] h-[560px]" @click="GoToProduct(id)">
       <div class="w-full h-full">
         <img :src="img" alt="" class="rounded-md w-full h-full object-cover" />
       </div>

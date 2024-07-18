@@ -1,8 +1,8 @@
 <template>
-  <div class="flex w-full items-center">
+  <div class="flex w-full items-center justify-center">
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="flex min-h-[220px] items-center w-[100%] gap-4 px-10 flex-wrap"
+        class="flex  items-center justify-center  w-[100%] gap-4 px-10 flex-wrap"
       >
         <card
           v-for="(product, inx) in paginatedProducts"

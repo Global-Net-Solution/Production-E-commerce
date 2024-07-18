@@ -12,14 +12,14 @@
       <avatar
         :rounded="'full'"
         :type="'image'"
-        class="!w-28 !h-28 flex justify-center items-center  cursor-pointer"
+        class="!w-32 !h-32 flex justify-center items-center  cursor-pointer"
         :class="{ hidden: !isImageLoaded }"
       >
         <img
           :src="Image"
           alt="product"
           :eager="true"
-          class="!min-w-28 !min-h-28 rounded-full"
+          class="!min-w-32 !min-h-32 rounded-full"
           :class="{ hidden: !isImageLoaded }"
           @load="isImageLoaded = true"
           @error="isImageLoaded = true"
