@@ -31,7 +31,7 @@
 
 <script>
 import { ScrollView } from "@progress/kendo-vue-scrollview";
-import mainHeroImg from "../../../../../../assets/img/main-hero-section-img.png";
+import mainHeroImg from "../../../../../../assets/img/1.png";
 
 export default {
   components: {
