@@ -82,7 +82,7 @@ export default {
     getImageUrl(imagePath) {
       var url =
         new URL("", import.meta.url).origin +
-        "/src/assets/dataImg/subCategories/" +
+        "/assets/assets/dataImg/subCategories/" +
         imagePath;
 
       return url;

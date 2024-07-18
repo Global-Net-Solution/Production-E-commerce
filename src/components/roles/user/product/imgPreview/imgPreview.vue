@@ -39,7 +39,7 @@
 
 <script>
 // import productImg from "../../../../../assets/img/productImg2.jpeg";
-// import productImg from "../../../../../assets/dataImg/products/p4.webp";
+// import productImg from "../../../../../assets/dataImg/products/p4.png";
 export default {
   props: {
     colors: Array,
@@ -58,8 +58,11 @@ export default {
   },
   methods: {
     getImageUrl(imagePath) {
-      console.log(imagePath);
-      var url = "../../../../../assets/dataImg/products/" + imagePath;
+      var url =
+        new URL("", import.meta.url).origin +
+        "/assets/assets/dataImg/products/" +
+        imagePath;
+
       return url;
     },
     colorsSelected(color) {

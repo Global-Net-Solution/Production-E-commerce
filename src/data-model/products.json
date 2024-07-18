@@ -6,7 +6,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p1.jpg",
+      "src": "p1.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -25,7 +25,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p2.jpg",
+      "src": "p2.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -44,7 +44,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p3.jpg",
+      "src": "p3.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -63,7 +63,7 @@
       "skus": "",
       "name": "Cobaki Scrub Jacket",
       "decription:": "Cobaki Scrub Jacket",
-      "src": "p4.webp",
+      "src": "p4.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -82,7 +82,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p1.jpg",
+      "src": "p1.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -101,7 +101,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p2.jpg",
+      "src": "p2.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -120,7 +120,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p3.jpg",
+      "src": "p3.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -139,7 +139,7 @@
       "skus": "",
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p4.webp",
+      "src": "p4.png",
       "model": "",
       "fit": "",
       "price": "$500",
@@ -148,7 +148,7 @@
       "colors": [
         {
           "color": 1,
-          "imgs": ["p4.webp", "p4.webp"]
+          "imgs": ["p4.png", "p4.png"]
         }
       ]
     }

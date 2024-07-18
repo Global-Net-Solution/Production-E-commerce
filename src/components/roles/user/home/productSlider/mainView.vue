@@ -85,8 +85,8 @@ export default {
       }
     },
     // importAllImages() {
-    //   const images = import.meta.glob('@/assets/*.jpg');
-    //   const webpImages = import.meta.glob('@/assets/*.webp');
+    //   const images = import.meta.glob('@/assets/*.png');
+    //   const webpImages = import.meta.glob('@/assets/*.png');
     //   for (const path in images) {
     //     images[path]().then((mod) => {
     //       const fileName = path.split('/').pop();
@@ -103,7 +103,7 @@ export default {
     getImageUrl(imagePath) {
       var url =
         new URL("", import.meta.url).origin +
-        "/src/assets/dataImg/products/" +
+        "/assets/assets/dataImg/products/" +
         imagePath;
 
 

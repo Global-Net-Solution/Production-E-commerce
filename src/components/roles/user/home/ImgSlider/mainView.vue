@@ -96,7 +96,12 @@ export default {
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
-      var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
+      var url =
+        new URL("", import.meta.url).origin +
+        "/assets/assets/dataImg/colors/" +
+        imagePath;
+        console.log(url)
+      // var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
       return url;
     },
   },

@@ -3,61 +3,61 @@
     {
       "id": 1,
       "name": "Navy",
-      "src": "navy.avif",
+      "src": "navy.png",
       "code": "#1d1e3a"
     },
     {
       "id": 2,
       "name": "DEEP REEF",
-      "src": "DEEPREEF.avif",
+      "src": "DEEPREEF.png",
       "code": "#012A4A"
     },
     {
       "id": 3,
       "name": "Black",
-      "src": "black.avif",
+      "src": "black.png",
       "code": "#101010"
     },
     {
       "id": 4,
       "name": "Royal blue",
-      "src": "royalBlue.avif",
+      "src": "royalBlue.png",
       "code": "#006EE7"
     },
     {
       "id": 5,
       "name": "Moss",
-      "src": "Moss.avif",
+      "src": "Moss.png",
       "code": "#4C564B"
     },
     {
       "id": 6,
       "name": "CEIL BLUE",
-      "src": "CEILBLUE.avif",
+      "src": "CEILBLUE.png",
       "code": "#7CB4E7"
     },
     {
       "id": 7,
       "name": "Carousel",
-      "src": "Carousel.avif",
+      "src": "Carousel.png",
       "code": "#48474C"
     },
     {
       "id": 8,
       "name": "Pink Sand",
-      "src": "PinkSand.avif",
+      "src": "PinkSand.png",
       "code": "#E7BFBD"
     },
     {
       "id": 9,
       "name": "Earth",
-      "src": "Earth.webp",
+      "src": "Earth.png",
       "code": "#835731"
     },
     {
       "id": 10,
       "name": "Hunter green",
-      "src": "Hunter_Green.avif",
+      "src": "Hunter_Green.png",
       "code": "#004E3E"
     }
   ]
