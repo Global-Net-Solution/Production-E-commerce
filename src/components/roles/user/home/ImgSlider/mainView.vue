@@ -74,6 +74,7 @@ export default {
       this.show = !this.show;
     },
     next() {
+      console.log('next')
       if (this.pageNumber < this.pageCount) {
         this.pageNumber = this.pageNumber + 1;
         this.show = false;
@@ -96,8 +97,8 @@ export default {
     },
     getImageUrl(imagePath) {
       var url =
-        new URL("", import.meta.url).origin +
-        "/src/assets/dataImg/colors/" +
+       
+        "../../../../../../src/assets/dataImg/colors/" +
         imagePath;
 
       return url;

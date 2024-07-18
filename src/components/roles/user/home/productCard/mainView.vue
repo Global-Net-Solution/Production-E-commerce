@@ -20,7 +20,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="w-full h-[60%]" @click="GoToProduct">
+    <div class="w-full h-[60%]" @click="GoToProduct(id)">
       <div class="w-full h-full">
         <img :src="img" alt="" class="rounded-md w-full h-full object-cover" />
       </div>
@@ -74,6 +74,7 @@ import productImg from "../../../../../assets/img/productImg.jpeg";
 import rating from "../../../../../components/rating/rating.vue";
 export default {
   props: {
+    id: Number,
     img: String,
     name: String,
     price: String,
@@ -96,8 +97,9 @@ export default {
       this.faviorate = !this.faviorate;
       this.isAnimating = true;
     },
-    GoToProduct() {
-      this.$router.push("/product");
+    GoToProduct(id) {
+      console.log(id);
+      this.$router.push(`/product/${id}`);
     },
   },
 };

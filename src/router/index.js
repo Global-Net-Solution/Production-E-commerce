@@ -36,7 +36,7 @@ const routes = [
         component: Home,
       },
       {
-        path: "/product",
+        path: "/product/:id",
         component: Product,
       },
       {
