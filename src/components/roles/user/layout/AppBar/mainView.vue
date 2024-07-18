@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[120px] bg-white pt-5 relative">
+  <div class="w-full h-[95px] bg-white pt-5 relative">
     <!-- <div class="w-full h-1/2 flex justify-between items-center relative pb-5">
       <div class="w-3/5 flex justify-center relative items-center">
         <img

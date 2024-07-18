@@ -3,7 +3,7 @@
     <div class="px-28 m-h-[50vh]">
       <HeroSection />
     </div>
-    <div class="w-full flex justify-center py-10 relative z-10 ">
+    <div class="w-full flex justify-center py- relative z-10 ">
       <imgSlider />
     </div>
     <div class="w-full px-8 min-h-[500px] py-5">

@@ -5,19 +5,22 @@
         <div class="w-1/4">
           <h5 class="mb-3 font-semibold">{{ $t("BuyMenu.title") }}</h5>
           <ul class="inter">
-            <li class="w-fit">
+            <li class="w-fit" v-for="category in categoreis">
+              <a href="" class="animated-link">{{ category.name }}</a>
+            </li>
+            <!-- <li class="w-fit">
               <a href="" class="animated-link">{{
-                $t("BuyMenu.Registration")
+                $t("BuyMenu?.Registration")
               }}</a>
             </li>
             <li class="w-fit">
               <a href="" class="animated-link">{{
-                $t("BuyMenu.Protection")
+                $t("BuyMenu?.Protection")
               }}</a>
             </li>
             <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("BuyMenu.Help") }}</a>
-            </li>
+              <a href="" class="animated-link">{{ $t("BuyMenu?.Help") }}</a>
+            </li> -->
           </ul>
         </div>
         <!-- <div class="w-1/4">
@@ -38,33 +41,49 @@
           <h5 class="mb-3 font-semibold">{{ $t("about.title") }}</h5>
           <ul class="inter">
             <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("about.info") }}</a>
+              <a href="" class="animated-link">Customer Service</a>
             </li>
             <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("about.news") }}</a>
+              <a href="" class="animated-link">Terms of use</a>
             </li>
             <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("about.Careers") }}</a>
-            </li>
-            <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("about.Policies") }}</a>
+              <a href="" class="animated-link">About</a>
             </li>
           </ul>
         </div>
         <div class="w-1/4">
           <h5 class="mb-3 font-semibold">{{ $t("help.title") }}</h5>
           <ul class="inter">
-            <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("help.topics") }}</a>
+            <li class="w-fit font-semibold">Email</li>
+            <li class="w-fit text-sm">
+              <a href="" class="animated-link text-customGray-500"
+                >Contact us</a
+              >
             </li>
-            <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("help.Contact") }}</a>
+
+            <li class="w-fit font-semibold mt-3">Telephone</li>
+            <li class="w-fit text-sm">
+              <a href="" class="animated-link text-customGray-500"
+                >917-909-8267</a
+              >
+            </li>
+            <li class="w-fit font-semibold mt-3">Address</li>
+            <li class="w-fit text-sm">
+              <a href="" class="animated-link text-customGray-500"
+                >1588 South Coast Dr Costa Mesa, CA 92626</a
+              >
+            </li>
+            <li class="w-fit font-semibold mt-3">Hours</li>
+            <li class="w-fit text-sm">
+              <a href="" class="animated-link text-customGray-500"
+                >M-f 6:00am - 8:00pm PST</a
+              >
             </li>
           </ul>
         </div>
       </div>
-      <div class="w-full flex py-4 border-b justify-between items-center">
-        <div>
+      <div class="w-full flex py-4 justify-between items-center">
+        <div class="flex w-full justify-between items-center">
           <ul class="flex gap-2">
             <li>
               <a href="" class="px-3 py-1 border rounded-lg text-sm"
@@ -87,35 +106,28 @@
               ></a>
             </li>
           </ul>
-        </div>
-        <div class="flex gap-1 justify-between contryInfo">
-          <div>
-            <base-combobox
-              :data="countries"
-              v-model="country"
-              class="bg-white h-10 bg-boxShadow-custom !w-[90%]"
-              :placeholder="'Country'"
-            />
+          <div class="w-full text-center inter text-xs text-customGray-500">
+            <p class="text-right">
+              Copyright 2014 Royal Scrubs Inc. All rights reserved.
+              <span class="text-primary-100">User agreement</span>,
+              <span class="text-primary-100">Privacy</span> and
+              <span class="text-primary-100">Cookies</span>.
+            </p>
           </div>
-         
         </div>
-      </div>
-      <div class="w-full text-center py-5 inter text-xs text-customGray-500">
-        <p>
-          Copyright 2017 NichoShop Inc. All rights reserved.
-          <span class="text-primary-100">User agreement</span>,
-          <span class="text-primary-100">Privacy</span> and
-          <span class="text-primary-100">Cookies</span>.
-        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import categoreis from "../../../../../data-model/categoreis.json";
+
 export default {
   data() {
-    return {};
+    return {
+      categoreis: categoreis.mainCategories,
+    };
   },
 };
 </script>

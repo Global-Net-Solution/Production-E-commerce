@@ -15,13 +15,11 @@
     "TodaysDeals": "Today's Deals"
   },
   "BuyMenu": {
-    "title": "Buy",
-    "Registration": "Registration",
-    "Protection": "Shopin Buyer Protection",
-    "Help": "buying help"
+    "title": "Shop by Category"
+    
   },
   "about": {
-    "title": "About Shopin",
+    "title": "Company",
     "info": "Company info",
     "news": "News",
     "Careers": "Careers",

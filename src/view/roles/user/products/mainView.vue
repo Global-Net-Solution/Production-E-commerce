@@ -1,20 +1,27 @@
 <template>
   <div class="px-28 flex justify-between">
     <div class="basis-[18%]">
-      <div class="w-full flex justify-between items-center">
-        <h2>Filter</h2>
-        <p class="text-xs cursor-pointer text-red-500">Clear All Filter</p>
-      </div>
-      <div class="w-full flex justify-between items-center relative my-8">
-        <KInput
-          :style="{ width: '100%' }"
-          :size="'small'"
-          :class="'custom-input'"
-          :placeholder="'Search Categories...'"
-          :rounded="'large'"
-        ></KInput>
-      </div>
+      <!-- <div class="w-full flex justify-between items-center">
+        <p
+          class="text-xs cursor-pointer text-red-500"
+          v-if="subCategoriesChecked.length > 0"
+        >
+          Clear All Filter
+        </p>
+      </div> -->
+
       <div class="w-full">
+        <div
+          class="w-full flex justify-between items-center relative  mb-5 -left-2"
+        >
+          <KInput
+            :style="{ width: '100%' }"
+            :size="'small'"
+            :class="'custom-input'"
+            :placeholder="'Search Categories...'"
+            :rounded="'large'"
+          ></KInput>
+        </div>
         <h1>Category</h1>
         <ul class="my-5">
           <li
@@ -23,11 +30,14 @@
             :key="category.id"
           >
             <div class="flex items-center justify-between">
-              <checkbox
-                :value="category.isChecked"
-                :label="category.name"
+              <li
                 @click="changeMainCategoryChecked(category)"
-              />
+                class="flex items-center cursor-pointer gap-1"
+              >
+                <checkbox class="mb-1" :value="category.isChecked" />
+                <p>{{ category.name }}</p>
+              </li>
+
               <div @click="category.isOpened = !category.isOpened">
                 <i class="fa-solid fa-plus"></i>
               </div>
@@ -39,13 +49,13 @@
               :key="subCategory.id"
               v-if="category.isOpened"
             >
-              <checkbox
-                class="mb-1"
-                :value="subCategory.isChecked"
-                :label="subCategory.name"
-                @change="subCategory.isChecked = !subCategory.isChecked"
+              <li
                 @click="changeSubCategoryChecked(category, subCategory)"
-              />
+                class="flex items-center cursor-pointer gap-1"
+              >
+                <checkbox class="mb-1" :value="subCategory.isChecked" />
+                <p>{{ subCategory.name }}</p>
+              </li>
             </ul>
           </li>
         </ul>
@@ -63,7 +73,7 @@
             :key="color.id"
             :title="color.name"
             @click="colorsSelected(color)"
-            class="rounded-full p-1 relative  border !border-transparent hover:!border-[#000]"
+            class="rounded-full p-1 relative border !border-transparent hover:!border-[#000]"
             :class="{
               '!border-[#000] checkColor': colorsSelectedList.some(
                 (ele) => ele.id === color.id
@@ -96,48 +106,21 @@
       </div>
     </div>
     <div class="basis-[80%]">
-      <div class="w-full h-16 border-b px-2 flex">
+      <div class="w-full px-2 flex">
         <div class="basis-[50%] overflow-hidden">
           <ul class="flex gap-3">
             <li
-              class="w-fit px-2 py-1 bg-customGray-100 rounded-md hover:bg-customGray-200 cursor-pointer"
+              class="w-fit px-2 py-1 text-sm bg-customGray-100 rounded-md hover:bg-customGray-200 cursor-pointer"
+              v-for="item in subCategoriesChecked"
+              :key="item.id"
             >
-              Headphones
-            </li>
-            <li
-              class="w-fit px-2 py-1 bg-customGray-100 rounded-md hover:bg-customGray-200 cursor-pointer"
-            >
-              Mobiles
-            </li>
-            <li
-              class="w-fit px-2 py-1 bg-customGray-100 rounded-md hover:bg-customGray-200 cursor-pointer"
-            >
-              Cell Phones
+              {{ item.name }}
             </li>
           </ul>
         </div>
-        <div class="basis-[50%] overflow-hidden flex gap-5 contryInfo">
-          <div class="flex w-[50%] gap-2 items-center">
-            <p class="text-xs text-customGray-400 w-[30%]">Sort by:</p>
-            <base-combobox
-              :data="countries"
-              v-model="country"
-              class="bg-white h-10 bg-boxShadow-custom !w-[100%]"
-              :placeholder="'Relevance'"
-            />
-          </div>
-          <div class="flex w-[50%] gap-1 items-center">
-            <p class="text-xs text-customGray-400 w-[55%]">Shipping to:</p>
-            <base-combobox
-              :data="countries"
-              v-model="country"
-              class="bg-white h-10 bg-boxShadow-custom !w-[100%]"
-              :placeholder="'USA'"
-            />
-          </div>
-        </div>
+        
       </div>
-      <div class="w-full px-2 py-5">
+      <div class="w-full px-2">
         <p class="text-xs text-customGray-400">234,567 results</p>
       </div>
       <div class="flex min-h-[220px] items-center w-full gap-8 px-10 flex-wrap">
@@ -253,10 +236,19 @@ export default {
         if (item.id == category.id) {
           item.subCategories.forEach((ele) => {
             if (ele.id == subCategories.id) {
-              console.log("hit");
               ele.isChecked = subCategories.isChecked;
             }
           });
+          console.log(item.subCategories);
+          var isCheckedFalse = item.subCategories.some((cat) => {
+            return cat.isChecked == false;
+          });
+
+          if (isCheckedFalse) {
+            item.isChecked = false;
+          } else {
+            item.isChecked = true;
+          }
         }
       });
     },
