@@ -1,171 +1,9 @@
 <template>
   <div class="w-full h-[95px] bg-white pt-5 relative">
-    <!-- <div class="w-full h-1/2 flex justify-between items-center relative pb-5">
-      <div class="w-3/5 flex justify-center relative items-center">
-        <img
-          :src="searchIcon"
-          alt=""
-          class="w-6 h-6 absolute top-3 left-20 z-10"
-        />
-        <base-autocomplete
-          :style="{ width: '85%' }"
-          :size="'small'"
-          :class="'custom-input'"
-          :placeholder="placeholder"
-          :rounded="'medium'"
-          class="pl-10"
-        ></base-autocomplete>
-      </div> 
-      <div class="w-1/5 flex justify-end">
-        <ul
-          class="flex justify-center items-center gap-6"
-          :dir="isRtl ? 'rtl' : 'ltr'"
-        >
-          <li
-            class="relative cursor-pointer"
-            @mouseover="ToggleUserMenu = true"
-            @mouseleave="ToggleUserMenu = false"
-          >
-            <a
-              ><img :src="profileIcon" alt="" class="w-5 h-5 cursor-pointer"
-            /></a>
-            <div
-              class="absolute -bottom-[320px] w-52 h-80 bg-white p-2 z-10 shadow-2xl -left-20 rounded-md"
-              v-show="ToggleUserMenu"
-            >
-              <div class="py-3 w-full h-full">
-                <p class="px-4 border-b pb-2 mb-2">username</p>
-                <ul class="flex flex-col justify-between h-[90%] text-sm">
-                  <li>
-                    <router-link to="/profile">My Profile</router-link>
-                  </li>
-                  <li>
-                    <router-link to="/orders">My Orders</router-link>
-                  </li>
-                  <li>
-                    <router-link to="/coupons">Coupons</router-link>
-                  </li>
-                  <li>
-                    <a href="">Points</a>
-                  </li>
-                  <li>
-                    <a href="">Recently viewed</a>
-                  </li>
-                  <li class="border-t pt-2 flex gap-2 items-center">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <a href="">Sign Out</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li
-            class="relative cursor-pointer"
-            @mouseover="ToggleCartMenu = true"
-            @mouseleave="ToggleCartMenu = false"
-          >
-            <router-link to="/cart"
-              ><img :src="cartIcon" alt="" class="w-6 h-6"
-            /></router-link>
-            <div
-              class="absolute -bottom-[295px] w-96 max-h-[500px] bg-white p-2 z-10 shadow-2xl -right-20 rounded-md overflow-auto"
-              v-show="ToggleCartMenu"
-            >
-              <div class="triangle-up absolute -top-5 shadow-2xl"></div> 
-            <div
-                class="py-3 w-full h-full flex flex-col justify-center items-center"
-              >
-                <img :src="EmptyCart" alt="EmptyCart" class="h-15 w-15 mb-2" />
-                <p class="pt-2 border-t text-sm w-full text-center">
-                  Shopping cart is Empty.
-                </p>
-              </div>
-              <div class="py-3 w-full h-fit flex flex-col">
-                <cardCart />
-              </div>
-              <div class="w-full flex gap-5 mt-2 justify-center">
-                <base-button
-                  :size="'large'"
-                  class="!bg-white !border !border-primary-500 !rounded-md !text-primary-500 !px-10"
-                  @click="GotoCart"
-                >
-                  View cart</base-button
-                >
-                <base-button
-                  :size="'large'"
-                  class="!bg-primary-500 !text-white !rounded-md !px-5"
-                  @click="$router.push('/checkout')"
-                  >Proceed to checkout</base-button
-                >
-              </div>
-            </div>
-          </li>
-          <li
-            class="relative cursor-pointer"
-            @mouseover="TogglefaviorateMenu = true"
-            @mouseleave="TogglefaviorateMenu = false"
-          >
-            <router-link to="/whishlist"
-              ><img :src="faviorateIcon" alt="" class="w-6 h-6"
-            /></router-link>
-            <div
-              class="absolute -bottom-32 w-52 h-50 bg-white p-2 z-10 shadow-2xl -left-20 rounded-md"
-              v-show="TogglefaviorateMenu"
-            >
-             
-              <div
-                class="py-3 w-full h-full flex flex-col justify-center items-center"
-              >
-                <img
-                  :src="EmptyFaviorate"
-                  alt="EmptyCart"
-                  class="h-10 w-10 mb-2"
-                />
-                <p class="pt-2 border-t text-sm w-full text-center">
-                  No Wishlist Yet.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li
-            class="relative cursor-pointer"
-            @mouseover="TogglNotificationMenu = true"
-            @mouseleave="TogglNotificationMenu = false"
-          >
-            <a href=""
-              ><img :src="notificationIcon" alt="" class="w-7.5 h-7.5"
-            /></a>
-            <div
-              class="absolute -bottom-[500px] w-96 h-[500px] bg-white p-2 z-10 shadow-2xl -right-20 rounded-md overflow-auto"
-              v-show="TogglNotificationMenu"
-            >
-      
-              <div class="py-3 w-full h-full flex flex-col items-center">
-                <img
-                  :src="EmptyNotification"
-                  alt="EmptyCart"
-                  class="h-10 w-10 mb-2"
-                />
-                <p class="pt-2 border-t text-sm w-full text-center">
-                  No Notifications Yet.
-                </p>
-                <div class="w-full">
-                  <notification />
-                  <notification />
-                  <notification />
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div> -->
     <div class="h-[30%] pb-10 pt-5 px-10 border-b flex items-center">
       <div class="w-[200px] h-[60px]">
-        <div class="w-full h-full relative logo">
+        <div class="relative w-full h-full logo">
           <router-link to="/" class="">
-            <!-- {{ $t("SiteName") }} -->
-            <!-- {{ categories }} -->
             <img
               :src="logo"
               alt="logo"
@@ -175,18 +13,18 @@
           </router-link>
         </div>
       </div>
-      <ul class="flex w-full gap-5 items-center justify-center">
+      <ul class="flex items-center justify-center w-full gap-5">
         <li class="" @mouseover="handleMouseOver">
           <router-link
             to=""
-            class="hover:bg-customGray-300 px-3 py-2 flex items-center"
+            class="flex items-center px-3 py-2 hover:bg-customGray-300"
           >
             {{ $t("Menu.Categories") }}
             <div v-if="!isHovered">
-              <i class="fa-solid fa-chevron-down text-xs ml-1"></i>
+              <i class="ml-1 text-xs fa-solid fa-chevron-down"></i>
             </div>
             <div v-if="isHovered">
-              <i class="fa-solid fa-chevron-up text-xs ml-1"></i>
+              <i class="ml-1 text-xs fa-solid fa-chevron-up"></i>
             </div>
           </router-link>
           <transition name="fade">
@@ -196,13 +34,11 @@
               :selectedCategoryid="selectedCategoryid"
             />
           </transition>
-          <!-- <transition name="fade"> -->
           <div
-            class="fixed left-0 w-full h-screen bg-black opacity-50 z-30 top-20"
+            class="fixed left-0 z-30 w-full h-screen bg-black opacity-50 top-20"
             v-show="isHovered"
             @mouseover="handleOverlayMouseOver"
           ></div>
-          <!-- </transition> -->
         </li>
         <li
           class=""
@@ -210,12 +46,7 @@
           :key="inx"
           @mouseover="handleMouseOver(catgory.id)"
         >
-          <!-- <router-link
-            to="/products"
-            class="text-sm px-3 py-2 flex items-center"
-            >{{ $t("Menu.Electronics") }}</router-link
-          > -->
-          <router-link to="/products" class="px-3 py-2 flex items-center">{{
+          <router-link to="/products" class="flex items-center px-3 py-2">{{
             catgory.name
           }}</router-link>
         </li>
@@ -283,7 +114,6 @@ export default {
       this.$router.push("/cart");
     },
     handleMouseOver(id) {
-      console.log(id);
       this.selectedCategoryid = id;
       this.isHovered = true;
     },

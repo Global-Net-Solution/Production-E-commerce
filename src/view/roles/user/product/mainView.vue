@@ -14,7 +14,7 @@
       />
     </div>
     <div class="w-full">
-      <productDescription />
+      <productDescription :description="product?.decription" />
     </div>
   </div>
 </template>

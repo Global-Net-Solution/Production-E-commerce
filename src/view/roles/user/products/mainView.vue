@@ -66,9 +66,7 @@
             @click="colorsSelected(color)"
             class="rounded-full p-1 relative border !border-transparent hover:!border-[#000]"
             :class="{
-              '!border-[#000] checkColor': colorsSelectedList.some(
-                (ele) => ele.id === color.id
-              ),
+              '!border-[#000] checkColor': colorsSelectedObj?.id === color?.id,
             }"
           >
             <p
@@ -100,7 +98,7 @@
         @click="resetAllFilters"
         v-if="
           sizeSelectedList.length > 0 ||
-          colorsSelectedList.length > 0 ||
+          colorsSelectedObj != null ||
           subCategoriesChecked.length > 0
         "
       >
@@ -114,9 +112,9 @@
             <li
               class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-100 hover:bg-customGray-200"
               v-for="item in subCategoriesChecked"
-              :key="item.id"
+              :key="item?.id"
             >
-              {{ item.name }}
+              {{ item?.name }}
             </li>
           </ul>
         </div>
@@ -133,6 +131,7 @@
           :product="product"
           v-for="product in filteredProducts"
           :key="product.id"
+          :colorsSelectedObj="colorsSelectedObj"
         />
       </div>
       <div class="w-full px-2 py-5 contryInfo">
@@ -162,7 +161,6 @@ import colors from "../../../../data-model/colors.json";
 import sizes from "../../../../data-model/sizes.json";
 import products from "../../../../data-model/products.json";
 import { Tooltip } from "@progress/kendo-vue-tooltip";
-
 export default {
   data() {
     return {
@@ -179,23 +177,38 @@ export default {
       width: 768,
       categories: categories.mainCategories,
       subCategoriesChecked: [],
-      colorsSelectedList: [],
+      colorsSelectedObj: null,
       sizeSelectedList: [],
       colors: colors.colors,
       sizes: sizes.size,
       products: products.products,
     };
   },
+
   mounted() {
+    if (this.$store.getters.getfilterBySubCategory != undefined) {
+      this.subCategoriesChecked.push(
+        this.$store.getters.getfilterBySubCategory
+      );
+    }
+    if (this.$store.getters.getfilterByColor != undefined) {
+      this.colorsSelectedObj = this.$store.getters.getfilterByColor;
+    }
     this.categories = this.categories.map((category) => {
       return {
         ...category,
-        isOpened: false,
+        isOpened: category?.subCategories?.some(
+          (subCategory) =>
+            subCategory.id === this.$store.getters.getfilterBySubCategory?.id
+        ),
         isChecked: false,
         subCategories: category?.subCategories?.map((subCategory) => {
           return {
             ...subCategory,
-            isChecked: false,
+            isChecked:
+              this.$store.getters.getfilterBySubCategory?.id == subCategory.id
+                ? true
+                : false,
           };
         }),
       };
@@ -272,16 +285,7 @@ export default {
       }
     },
     colorsSelected(color) {
-      const exists = this.colorsSelectedList?.some(
-        (colorselected) => colorselected.id == color.id
-      );
-      if (!exists) {
-        this.colorsSelectedList.push(color);
-      } else {
-        this.colorsSelectedList = this.colorsSelectedList.filter(
-          (colorselected) => colorselected.id !== color.id
-        );
-      }
+      this.colorsSelectedObj = color;
     },
     sizesSelected(size) {
       const exists = this.sizeSelectedList?.some(
@@ -297,12 +301,12 @@ export default {
     },
     resetAllFilters() {
       this.subCategoriesChecked = [];
-      this.colorsSelectedList = [];
+      this.colorsSelectedObj = null;
       this.sizeSelectedList = [];
       this.categories.forEach((item) => {
         item.isChecked = false;
         item.isOpened = false;
-        item.subCategories.forEach((ele) => {
+        item.subCategories?.forEach((ele) => {
           ele.isChecked = false;
         });
       });
@@ -318,27 +322,20 @@ export default {
   },
   computed: {
     filteredProducts() {
-      console.log(
-        this.subCategoriesChecked,
-        this.colorsSelectedList,
-        this.sizeSelectedList
-      );
       return this.products.filter((product) => {
         if (
           this.subCategoriesChecked.length > 0 &&
           !this.subCategoriesChecked.some((subcategory) =>
-            product.subCategoryzId.includes(subcategory.id)
+            product.subCategoryzId.includes(subcategory?.id)
           )
         ) {
           return false;
         }
 
         if (
-          this.colorsSelectedList.length > 0 &&
-          !product.colors.some((color) =>
-            this.colorsSelectedList.some(
-              (selectedColor) => selectedColor.id === color.color
-            )
+          this.colorsSelectedObj != null &&
+          !product.colors.some(
+            (color) => this.colorsSelectedObj?.id === color.color
           )
         ) {
           return false;

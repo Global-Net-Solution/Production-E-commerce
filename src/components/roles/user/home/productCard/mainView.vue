@@ -1,7 +1,6 @@
 <template>
   <div class="h-[650px] w-full relative">
     <div>
-
       <div
         class="absolute z-10 w-8 h-8 p-1 text-center bg-white rounded-full cursor-pointer right-2 top-2"
         v-if="faviorate"
@@ -14,29 +13,40 @@
     </div>
     <div class="w-[390px] h-[560px]" @click="GoToProduct(product?.id)">
       <div class="w-full h-full">
-        <img :src="getImageUrl(product?.src)" alt="" class="object-cover w-full h-full rounded-md" />
+        <img
+          :src="
+            getImageUrl(
+              colorsSelectedObj == null ? product?.src : colorsArray?.imgs[0]
+            )
+          "
+          alt=""
+          class="object-cover w-full h-full rounded-md"
+        />
       </div>
       <div>
         <div class="py-3">
           <h4>{{ product?.name }}</h4>
-          <div class="flex items-center gap-1">
-          </div>
+          <div class="flex items-center gap-1"></div>
           <div class="flex flex-col justify-between">
             <div class="flex flex-col" v-if="discount">
               <div class="flex items-center gap-5">
                 <p class="text-sm line-through text-customGray-400">
-                  {{ product?.discount }}
+                  ${{ product?.price }}
                 </p>
                 <p
                   class="bg-customRed-500 text-white rounded-md px-1 py-[2px] font-thin text-xs"
                 >
-                  12%
+                  {{ product?.discount }}%
                 </p>
               </div>
             </div>
             <div class="flex items-center justify-between mt-1">
               <div>
-                <p class="text-sm opacity-60">{{ product?.price }}</p>
+                <p class="text-sm opacity-60">
+                  ${{
+                    product?.price - product?.price * (product?.discount / 100)
+                  }}
+                </p>
               </div>
             </div>
           </div>
@@ -57,7 +67,8 @@ export default {
     name: String,
     price: String,
     discount: String,
-    product:Object,
+    product: Object,
+    colorsSelectedObj: Object,
   },
   data() {
     return {
@@ -66,6 +77,7 @@ export default {
       star: 1,
       faviorate: false,
       isAnimating: false,
+      colorsArray: null,
     };
   },
   components: {
@@ -87,6 +99,18 @@ export default {
         imagePath;
       return url;
     },
+  },
+  watch: {
+    colorsSelectedObj(newVal) {
+      this.colorsArray = this.product.colors.find(
+        (color) => color.color === this.colorsSelectedObj?.id
+      );
+    },
+  },
+  mounted() {
+    this.colorsArray = this.product.colors.find(
+      (color) => color.color === this.colorsSelectedObj?.id
+    );
   },
 };
 </script>

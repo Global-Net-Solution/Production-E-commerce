@@ -1,10 +1,10 @@
 <template>
   <transition name="item">
-    <div class="flex flex-col justify-center items-center gap-1 mb-5" @click="$router.push('/products')">
-      <div
-        class="w-28 h-28  flex justify-center items-center rounded-full"
-      > 
-   
+    <div
+      class="flex flex-col items-center justify-center gap-1 mb-5"
+      @click="goToProducts"
+    >
+      <div class="flex items-center justify-center rounded-full w-28 h-28">
         <img :src="src" :alt="'Avatar Image'" class="w-20 h-20 rounded-full" />
       </div>
       <div>
@@ -15,15 +15,22 @@
 </template>
 
 <script>
-import {Avatar} from "@progress/kendo-vue-layout";
+import { Avatar } from "@progress/kendo-vue-layout";
 export default {
-  components: {Avatar},
+  components: { Avatar },
   data() {
     return {};
   },
   props: {
     src: String,
     header: String,
+    product: Object,
+  },
+  methods: {
+    goToProducts() {
+      this.$store.dispatch("setfilterBySubCategory", this.product);
+      this.$router.push("/products");
+    },
   },
 };
 </script>

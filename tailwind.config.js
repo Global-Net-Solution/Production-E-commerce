@@ -2,11 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      sm: { min: "100px", max: "640px" },
+      md: { min: "641px", max: "1150px" },
+    },
     extend: {
       colors: {
         primary: {
           100: "#0B80CC",
-          200:"#DAF1FF",
+          200: "#DAF1FF",
           500: "#0072BC",
         },
         customGray: {
@@ -16,8 +20,8 @@ export default {
           400: "#81859C",
           500: "#81818F",
           600: "#BCBCBC",
-          700:"#F5F5F5",
-          800:"#25252E",
+          700: "#F5F5F5",
+          800: "#25252E",
         },
         customRed: {
           500: "#FF6666",

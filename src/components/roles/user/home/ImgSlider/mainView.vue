@@ -6,14 +6,14 @@
       @click="prev"
     >
       <button
-        class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md"
+        class="flex items-center justify-center w-10 h-10 bg-white border rounded-full shadow-md border-1 text-customGray-400"
       >
         <i class="fa-solid fa-angle-left"></i>
       </button>
     </div>
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="w-full flex items-center justify-start gap-10 overflow-x-hidden slider px-28 relative z-10"
+        class="relative z-10 flex items-center justify-start w-full gap-10 overflow-x-hidden md:w-[600px] md:overflow-x-scroll sm:w-[300px] sm:overflow-x-scroll slider px-28"
         :class="{ 'flex-wrap w-full': from == 'all' }"
       >
         <!-- {{ colors.length }} -->
@@ -23,7 +23,7 @@
           :Image="getImageUrl(item.src)"
           :name="item.name"
           :id="item.id"
-          @click="GoToProducts"
+          @click="GoToProducts(item)"
         />
       </div>
     </Push>
@@ -33,7 +33,7 @@
       class="absolute right-3 z-[999999] top-[40%]"
     >
       <button
-        class="bg-white w-10 h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md mr-5"
+        class="flex items-center justify-center w-10 h-10 mr-5 bg-white border rounded-full shadow-md border-1 text-customGray-400"
       >
         <i class="fa-solid fa-angle-right"></i>
       </button>
@@ -65,7 +65,7 @@ export default {
       animationType: "push",
       show: true,
       colors: colorData.colors,
-      pageSize: 9,
+      pageSize: 8,
     };
   },
 
@@ -74,7 +74,6 @@ export default {
       this.show = !this.show;
     },
     next() {
-      console.log("next");
       if (this.pageNumber < this.pageCount) {
         this.pageNumber = this.pageNumber + 1;
         this.show = false;
@@ -92,7 +91,8 @@ export default {
         }, 200);
       }
     },
-    GoToProducts() {
+    GoToProducts(item) {
+      this.$store.dispatch("setfilterByColor", item);
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
@@ -100,7 +100,7 @@ export default {
         new URL("", import.meta.url).origin +
         "/assets/assets/dataImg/colors/" +
         imagePath;
-        console.log(url)
+      console.log(url);
       // var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
       return url;
     },

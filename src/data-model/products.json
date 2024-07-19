@@ -2,13 +2,12 @@
   "products": [
     {
       "id": "1",
-      "subCategoryzId": [1, 2],
+      "subCategoryzId": [1],
       "skus": "sz23122936607799745",
       "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
+      "decription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived not only five centuries but also the leap into electronic typesetting remaining essentially unchanged It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived not only five centuries but also the leap into electronic typesetting remaining essentially unchanged It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing software like",
       "src": "p1.png",
-      "model": "Lorem Lorem",
-      "fit": "",
+      "model": "Regular",
       "price": "500",
       "discount": "12",
       "sizes": [2, 3, 4],
@@ -37,66 +36,103 @@
     },
     {
       "id": "2",
-      "subCategoryzId": [3],
-      "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
+      "subCategoryzId": [1],
+      "skus": "sz23122936607799897",
+      "name": "Chisec Three-Pocket Scrub Top™",
+      "decription:": "One of our all-time favorites (and yours, too), the tailored-fit FIONx Chisec™ features three pockets, including two ingeniously hidden side seam pockets.",
       "src": "p2.png",
-      "model": "",
-      "fit": "",
-      "price": "$500",
-      "discount": "999",
+      "model": "Regular",
+      "price": "38",
+      "discount": "2",
       "sizes": [6, 7],
       "colors": [
         {
           "color": 1,
-          "imgs": ["", ""]
+          "imgs": [
+            "p2.png",
+            "navymen5.png",
+            "navymen6.png",
+            "navymen7.png",
+            "navymen8.png"
+          ]
         },
         {
-          "color": 5,
-          "imgs": ["", ""]
+          "color": 8,
+          "imgs": [
+            "pinkmen1.png",
+            "pinkmen2.png",
+            "pinkmen3.png",
+            "pinkmen4.png",
+            "pinkmen5.png"
+          ]
         }
       ]
     },
     {
       "id": "3",
-      "subCategoryzId": [4],
-      "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p3.png",
-      "model": "",
-      "fit": "",
-      "price": "$500",
-      "discount": "999",
+      "subCategoryzId": [2],
+      "skus": "sz23122938807799897",
+      "name": "Tansen Jogger Scrub Pants™",
+      "decription:": "Seamlessly transition from work to workout to play. The FIONx Tansen™ has a slim fit, five pockets and features our 100% Awesome proprietary FIONx™ fabric.",
+      "src": "navymen9.png",
+      "model": "Regular",
+      "price": "48",
+      "discount": "2",
       "sizes": [1, 2, 3, 4, 5, 6, 7],
       "colors": [
         {
           "color": 1,
-          "imgs": ["", ""]
+          "imgs": [
+            "navymen9.png",
+            "p3.png",
+            "navymen10.png",
+            "navymen11.png",
+            "navymen12.png"
+          ]
         },
         {
-          "color": 4,
-          "imgs": ["", ""]
+          "color": 8,
+          "imgs": [
+            "pinkpants7.png",
+            "pinkpants6.png",
+            "pinkpants8.png",
+            "pinkpants9.png",
+            "pinkpants10.png"
+          ]
         }
       ]
     },
     {
       "id": "4",
       "subCategoryzId": [5],
-      "skus": "",
-      "name": "Cobaki Scrub Jacket",
-      "decription:": "Cobaki Scrub Jacket",
-      "src": "p4.png",
-      "model": "",
-      "fit": "",
-      "price": "$500",
-      "discount": "999",
-      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "skus": "sz23822938807799897",
+      "name": "Zapote Scrub Jacket",
+      "decription:": "Featuring our proprietary FIONx™ fabric, seven pockets and a bungee at the hem, the FIONx™ Zapote is the best jacket to put over scrubs and workout clothes.",
+      "src": "navymen13.png",
+      "model": "Regular",
+      "price": "500",
+      "discount": "13",
+      "sizes": [1, 2, 3, 4],
       "colors": [
         {
           "color": 1,
-          "imgs": ["", ""]
+          "imgs": [
+            "navymen13.png",
+            "p4.png",
+            "navymen14.png",
+            "navymen15.png",
+            "navymen16.png"
+          ]
+        },
+        {
+          "color": 3,
+          "imgs": [
+            "blackmen1.png",
+            "blackmen2.png",
+            "blackmen3.png",
+            "blackmen4.png",
+            "blackmen5.png"
+          ]
         }
       ]
     },
@@ -107,8 +143,7 @@
       "name": "Leon Three-Pocket Scrub Top",
       "decription:": "Leon Three-Pocket Scrub Top",
       "src": "p1.png",
-      "model": "Lorem Lorem",
-      "fit": "",
+      "model": "Regular",
       "price": "500",
       "discount": "12",
       "sizes": [2, 3, 4],
@@ -137,58 +172,103 @@
     },
     {
       "id": "6",
-      "subCategoryzId": [1, 3],
-      "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
+      "subCategoryzId": [3],
+      "skus": "sz23122936607799897",
+      "name": "Chisec Three-Pocket Scrub Top™",
+      "decription:": "One of our all-time favorites (and yours, too), the tailored-fit FIONx Chisec™ features three pockets, including two ingeniously hidden side seam pockets.",
       "src": "p2.png",
-      "model": "",
-      "fit": "",
+      "model": "Regular",
       "price": "$500",
       "discount": "999",
-      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "sizes": [6, 7],
       "colors": [
         {
           "color": 1,
-          "imgs": ["", ""]
+          "imgs": [
+            "p2.png",
+            "navymen5.png",
+            "navymen6.png",
+            "navymen7.png",
+            "navymen8.png"
+          ]
+        },
+        {
+          "color": 8,
+          "imgs": [
+            "pinkmen1.png",
+            "pinkmen2.png",
+            "pinkmen3.png",
+            "pinkmen4.png",
+            "pinkmen5.png"
+          ]
         }
       ]
     },
     {
       "id": "7",
-      "subCategoryzId": [3],
-      "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p3.png",
-      "model": "",
-      "fit": "",
-      "price": "$500",
-      "discount": "999",
-      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "subCategoryzId": [2],
+      "skus": "sz23122939107799897",
+      "name": "Tansen Jogger Scrub Pants™",
+      "decription:": "Seamlessly transition from work to workout to play. The FIONx Tansen™ has a slim fit, five pockets and features our 100% Awesome proprietary FIONx™ fabric.",
+      "src": "navymen9.png",
+      "model": "Regular",
+      "price": "48",
+      "discount": "2",
+      "sizes": [1, 2, 3, 4, 5],
       "colors": [
         {
           "color": 1,
-          "imgs": ["", ""]
+          "imgs": [
+            "navymen9.png",
+            "p3.png",
+            "navymen10.png",
+            "navymen11.png",
+            "navymen12.png"
+          ]
+        },
+        {
+          "color": 8,
+          "imgs": [
+            "pinkpants7.png",
+            "pinkpants6.png",
+            "pinkpants8.png",
+            "pinkpants9.png",
+            "pinkpants10.png"
+          ]
         }
       ]
     },
     {
       "id": "8",
-      "subCategoryzId": [2, 3],
-      "skus": "",
-      "name": "Leon Three-Pocket Scrub Top",
-      "decription:": "Leon Three-Pocket Scrub Top",
-      "src": "p4.png",
-      "model": "",
-      "fit": "",
-      "price": "$500",
-      "discount": "999",
-      "sizes": [1, 2, 3, 4, 5, 6, 7],
+      "subCategoryzId": [5],
+      "skus": "sz23822938807799897",
+      "name": "Zapote Scrub Jacket",
+      "decription:": "Featuring our proprietary FIONx™ fabric, seven pockets and a bungee at the hem, the FIONx™ Zapote is the best jacket to put over scrubs and workout clothes.",
+      "src": "navymen13.png",
+      "model": "Regular",
+      "price": "500",
+      "discount": "13",
+      "sizes": [1, 2, 3],
       "colors": [
         {
           "color": 1,
-          "imgs": ["p4.png", "p4.png"]
+          "imgs": [
+            "navymen13.png",
+            "p4.png",
+            "navymen14.png",
+            "navymen15.png",
+            "navymen16.png"
+          ]
+        },
+        {
+          "color": 3,
+          "imgs": [
+            "blackmen1.png",
+            "blackmen2.png",
+            "blackmen3.png",
+            "blackmen4.png",
+            "blackmen5.png"
+          ]
         }
       ]
     },
@@ -199,8 +279,7 @@
       "name": "High Waisted Zamora Jogger Scrub Pants™",
       "decription:": "Leon Three-Pocket Scrub Top",
       "src": "navyPants.png",
-      "model": "Lorem Lorem",
-      "fit": "",
+      "model": "Regular",
       "price": "48",
       "discount": "12",
       "sizes": [1, 2, 3, 4, 5],

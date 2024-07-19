@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute w-full top-20 bg-white z-40 left-0 flex px-28 py-5">
+  <div class="absolute left-0 z-40 flex w-full py-5 bg-white top-20 px-28">
     <div
       class="basis-[18%] py-3 border-r flex flex-col text-sm text-customGray-800 overflow-hidden hover:overflow-auto"
     >
@@ -7,13 +7,13 @@
         <li
           v-for="(category, index) in categories"
           :key="index"
-          class="cursor-pointer hover:bg-customGray-700 m-w-full p-1 rounded"
+          class="p-1 rounded cursor-pointer hover:bg-customGray-700 m-w-full"
           :class="{ 'bg-customGray-700': selectedCategoryid == category.id }"
           @mouseover="showItems(category.subCategories, category.items2)"
         >
-          <div class="flex justify-between items-center px-3 py-2">
+          <div class="flex items-center justify-between px-3 py-2">
             <p>{{ category.name }}</p>
-            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <i class="text-xs fa-solid fa-chevron-right"></i>
           </div>
         </li>
       </ul>
@@ -27,11 +27,15 @@
           :key="index"
           class="basis-1/3"
         >
-          <item :src="getImageUrl(item.src)" :header="item.name" />
+          <item
+            :src="getImageUrl(item.src)"
+            :header="item.name"
+            :product="item"
+          />
         </div>
       </div>
     </div>
-    <div class="basis-1/2 py-3 px-12 overflow-hidden hover:overflow-auto">
+    <div class="px-12 py-3 overflow-hidden basis-1/2 hover:overflow-auto">
       <div class="flex flex-wrap h-full">
         <div
           v-for="(item, index) in selectedItem2"

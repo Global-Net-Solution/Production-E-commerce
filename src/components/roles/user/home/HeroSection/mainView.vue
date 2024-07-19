@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full justify-between gap-5">
-    <div class="basis-[20%]">
+  <div class="flex justify-between w-full gap-5">
+    <div class="basis-[20%] ">
       <img
         :src="heroImg"
         alt="hero-section-Img"
