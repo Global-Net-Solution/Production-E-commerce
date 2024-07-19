@@ -2,7 +2,7 @@
   <div class="flex items-center justify-center w-full">
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="flex  items-center justify-center  w-[100%] gap-4 px-10 flex-wrap"
+        class="flex items-center justify-center w-[100%] gap-4 px-10 flex-wrap"
       >
         <card
           v-for="(product, inx) in paginatedProducts"
@@ -17,7 +17,6 @@
         />
       </div>
     </Push>
-  
   </div>
 </template>
 
@@ -55,7 +54,7 @@ export default {
       // const start = (this.pageNumber - 1) * this.pageSize;
       // const end = Math.min(start + this.pageSize, filteredProducts.length);
       // return filteredProducts.slice(start, end);
-      return filteredProducts
+      return filteredProducts;
     },
 
     pageCount() {
@@ -85,28 +84,12 @@ export default {
         }, 200);
       }
     },
-    // importAllImages() {
-    //   const images = import.meta.glob('@/assets/*.png');
-    //   const webpImages = import.meta.glob('@/assets/*.png');
-    //   for (const path in images) {
-    //     images[path]().then((mod) => {
-    //       const fileName = path.split('/').pop();
-    //       this.$set(this.imageMap, fileName, mod.default);
-    //     });
-    //   }
-    //   for (const path in webpImages) {
-    //     webpImages[path]().then((mod) => {
-    //       const fileName = path.split('/').pop();
-    //       this.$set(this.imageMap, fileName, mod.default);
-    //     });
-    //   }
-    // },
+
     getImageUrl(imagePath) {
       var url =
         new URL("", import.meta.url).origin +
         "/assets/assets/dataImg/products/" +
         imagePath;
-
 
       return url;
     },

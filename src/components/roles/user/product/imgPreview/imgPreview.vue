@@ -1,7 +1,6 @@
 <template>
-  <div class="flex gap-3 h-full w-full">
+  <div class="flex w-full h-full gap-3">
     <div class="overflow-hidden">
-      <!-- {{ ImgList }} -->
       <base-button
         :size="'small'"
         class="!bg-white !border !border-primary-500 !rounded-lg w-full mb-3"
@@ -10,53 +9,75 @@
       ></base-button>
       <ul class="flex flex-col gap-2">
         <li
-          class="w-20 h-1/4"
-          v-for="(img, index) in ImgList.imgs"
+          class="relative w-20 cursor-pointer h-1/4 "
+          v-for="(img, index) in ImageListPreview.imgs"
           :key="index"
+          :class="{'imageLayer':currentIndex!=index}"
+          @click="currentImg(img,index)"
         >
           <img
             :src="getImageUrl(img)"
             alt="product-Img"
-            class="w-full h-full object-cover"
+            class="object-cover w-full h-full"
           />
         </li>
       </ul>
-      <base-button
+      <!-- <base-button
         :size="'small'"
         class="!bg-white !border !border-primary-500 !rounded-lg w-full mt-3"
         ><i class="fa-solid fa-chevron-down"></i
-      ></base-button>
+      ></base-button> -->
     </div>
     <div class="w-full h-full">
       <img
-        :src="selectedImg"
+        :src="getImageUrl(selectedImg)"
         alt="product-Img"
-        class="w-full h-full object-cover"
+        class="object-cover w-full h-full"
       />
     </div>
   </div>
 </template>
 
 <script>
-// import productImg from "../../../../../assets/img/productImg2.jpeg";
-// import productImg from "../../../../../assets/dataImg/products/p4.png";
 export default {
   props: {
     colors: Array,
+    currentColor: Object,
   },
   data() {
     return {
-      // productImg,
-      SelectedColorId: 1,
-      selectedImg: this.colors[0].imgs[0],
+      SelectedColorId: 8,
+      selectedImg:
+        this.colors &&
+        this.colors[
+          this.colors.findIndex((item) => item.color === this.colors[0].color)
+        ].imgs[0],
+      colorsSelected: null,
+      ImageListPreview: [],
+      currentIndex: 0,
     };
   },
-  computed: {
-    ImgList() {
-      return this.colors.find((color) => color.color === this.SelectedColorId);
+  watch: {
+    currentColor(newValue) {
+      this.ImgList(newValue.id);
+      this.selectedImg =
+        this.colors &&
+        this.colors[this.colors.findIndex((item) => item.color === newValue.id)]
+          .imgs[0];
     },
   },
+
+  computed: {},
+  mounted() {
+    this.ImgList();
+  },
   methods: {
+    ImgList(currentColor = this.colors[0].color) {
+      console.log(this.colors);
+      this.ImageListPreview = this.colors?.find(
+        (color) => color.color === currentColor
+      );
+    },
     getImageUrl(imagePath) {
       var url =
         new URL("", import.meta.url).origin +
@@ -66,19 +87,25 @@ export default {
       return url;
     },
     colorsSelected(color) {
-      const exists = this.colorsSelectedList?.some(
-        (colorselected) => colorselected.id == color.id
-      );
-      if (!exists) {
-        this.colorsSelectedList.push(color);
-      } else {
-        this.colorsSelectedList = this.colorsSelectedList.filter(
-          (colorselected) => colorselected.id !== color.id
-        );
-      }
+      this.colorsSelected = color;
+    },
+    currentImg(img, index) {
+      console.log(img);
+      this.currentIndex = index;
+      this.selectedImg = img;
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.imageLayer::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #eeeeeea2;
+}
+</style>

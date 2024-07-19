@@ -1,10 +1,17 @@
 <template>
-  <div class="px-28 py-10">
-    {{}}
-    <div class="w-full flex gap-10 h-screen">
-      <imgPreview class="w-[50%]" :colors="product.colors" />
-      <productDetails class="w-[30%] h-screen" />
-      <!-- <paymentInfo class="" /> -->
+  <div class="py-10 px-28">
+    <div class="flex w-full h-screen gap-10">
+      <imgPreview
+        class="w-[50%]"
+        :colors="product?.colors"
+        :currentColor="currentColor"
+      />
+      <productDetails
+        class="w-[30%] h-screen"
+        :product="product"
+        :colors="product?.colors"
+        @colorSelected="colorSelected"
+      />
     </div>
     <div class="w-full">
       <productDescription />
@@ -27,7 +34,13 @@ export default {
     return {
       products: products.products,
       product: null,
+      currentColor: null,
     };
+  },
+  methods: {
+    colorSelected(color) {
+      this.currentColor = color;
+    },
   },
   components: {
     imgPreview,

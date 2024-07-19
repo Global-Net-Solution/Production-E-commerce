@@ -1,15 +1,6 @@
 <template>
   <div class="flex justify-between px-28">
     <div class="basis-[18%]">
-      <!-- <div class="flex items-center justify-between w-full">
-        <p
-          class="text-xs text-red-500 cursor-pointer"
-          v-if="subCategoriesChecked.length > 0"
-        >
-          Clear All Filter
-        </p>
-      </div> -->
-
       <div class="w-full">
         <div
           class="relative flex items-center justify-between w-full mb-5 -left-2"
@@ -104,6 +95,17 @@
           </li>
         </ul>
       </div>
+      <div
+        class="p-2 px-3 mb-5 text-sm border rounded cursor-pointer w-fit"
+        @click="resetAllFilters"
+        v-if="
+          sizeSelectedList.length > 0 ||
+          colorsSelectedList.length > 0 ||
+          subCategoriesChecked.length > 0
+        "
+      >
+        Reset Filter
+      </div>
     </div>
     <div class="basis-[80%]">
       <div class="flex w-full px-2">
@@ -122,10 +124,12 @@
       <div class="flex justify-end w-full px-2">
         <p class="text-xs text-customGray-400">234,567 results</p>
       </div>
-      <div class="flex min-h-[220px] items-center w-full gap-7 px-10 flex-wrap">
+      <div
+        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap"
+      >
         <card
           class="basis-[22%]"
-          @click="GoToProduct"
+          @click="GoToProduct(product.id)"
           :product="product"
           v-for="product in filteredProducts"
           :key="product.id"
@@ -221,7 +225,9 @@ export default {
             (category) => category.id === subCategory.id
           );
           if (exists) {
-            this.subCategoriesChecked.pop(subCategory);
+            this.subCategoriesChecked = this.subCategoriesChecked.filter(
+              (sub) => sub.id !== subCategory.id
+            );
           }
         });
       }
@@ -235,7 +241,6 @@ export default {
               ele.isChecked = subCategories.isChecked;
             }
           });
-          console.log(item.subCategories);
           var isCheckedFalse = item.subCategories.some((cat) => {
             return cat.isChecked == false;
           });
@@ -247,6 +252,24 @@ export default {
           }
         }
       });
+      if (subCategories.isChecked) {
+        const exists = this.subCategoriesChecked?.some(
+          (category) => category.id == subCategories.id
+        );
+
+        if (!exists) {
+          this.subCategoriesChecked.push(subCategories);
+        }
+      } else {
+        const exists = this.subCategoriesChecked?.some(
+          (category) => category.id === subCategories.id
+        );
+        if (exists) {
+          this.subCategoriesChecked = this.subCategoriesChecked.filter(
+            (sub) => sub.id !== subCategories.id
+          );
+        }
+      }
     },
     colorsSelected(color) {
       const exists = this.colorsSelectedList?.some(
@@ -272,6 +295,21 @@ export default {
         );
       }
     },
+    resetAllFilters() {
+      this.subCategoriesChecked = [];
+      this.colorsSelectedList = [];
+      this.sizeSelectedList = [];
+      this.categories.forEach((item) => {
+        item.isChecked = false;
+        item.isOpened = false;
+        item.subCategories.forEach((ele) => {
+          ele.isChecked = false;
+        });
+      });
+    },
+    GoToProduct(id) {
+      this.$router.push(`/product/${id}`);
+    },
   },
   components: {
     card,
@@ -280,29 +318,42 @@ export default {
   },
   computed: {
     filteredProducts() {
+      console.log(
+        this.subCategoriesChecked,
+        this.colorsSelectedList,
+        this.sizeSelectedList
+      );
       return this.products.filter((product) => {
-        const hasSubCategoryMatch =
-          this.subCategoriesChecked.length > 0
-            ? product.subCategoryzId.some((subCat) =>
-                this.subCategoriesChecked.includes(subCat)
-              )
-            : false;
-        const hasColorMatch =
-          this.colorsSelectedList.length > 0
-            ? product.colors.some((color) =>
-                this.colorsSelectedList.includes(color.color)
-              )
-            : false;
-        const hasSizeMatch =
-          this.sizeSelectedList.length > 0
-            ? product.sizes.some((size) => this.sizeSelectedList.includes(size))
-            : false;
+        if (
+          this.subCategoriesChecked.length > 0 &&
+          !this.subCategoriesChecked.some((subcategory) =>
+            product.subCategoryzId.includes(subcategory.id)
+          )
+        ) {
+          return false;
+        }
 
-        return (
-          (this.subCategoriesChecked.length === 0 || hasSubCategoryMatch) &&
-          (this.colorsSelectedList.length === 0 || hasColorMatch) &&
-          (this.sizeSelectedList.length === 0 || hasSizeMatch)
-        );
+        if (
+          this.colorsSelectedList.length > 0 &&
+          !product.colors.some((color) =>
+            this.colorsSelectedList.some(
+              (selectedColor) => selectedColor.id === color.color
+            )
+          )
+        ) {
+          return false;
+        }
+
+        if (
+          this.sizeSelectedList.length > 0 &&
+          !this.sizeSelectedList.some((selectedSize) =>
+            product.sizes.includes(selectedSize.id)
+          )
+        ) {
+          return false;
+        }
+
+        return true;
       });
     },
   },

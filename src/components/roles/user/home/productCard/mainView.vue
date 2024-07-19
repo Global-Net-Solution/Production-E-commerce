@@ -12,7 +12,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="w-[390px] h-[560px]" @click="GoToProduct(id)">
+    <div class="w-[390px] h-[560px]" @click="GoToProduct(product?.id)">
       <div class="w-full h-full">
         <img :src="getImageUrl(product?.src)" alt="" class="object-cover w-full h-full rounded-md" />
       </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="flex items-center justify-between mt-1">
               <div>
-                <p class="text-base">{{ product?.price }}</p>
+                <p class="text-sm opacity-60">{{ product?.price }}</p>
               </div>
             </div>
           </div>
