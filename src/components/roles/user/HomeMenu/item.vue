@@ -28,8 +28,18 @@ export default {
   },
   methods: {
     goToProducts() {
+      //console.log("goToProducts", this.product);
       this.$store.dispatch("setfilterBySubCategory", this.product);
-      this.$router.push("/products");
+      localStorage;
+      //console.log(this.$route.path);
+      //console.log(localStorage.getItem(""));
+      if (this.$route.path != "/products") {
+        this.$router.push("/products");
+      } else {
+        //console.log("bug");
+       
+       window.location.reload();
+      }
     },
   },
 };

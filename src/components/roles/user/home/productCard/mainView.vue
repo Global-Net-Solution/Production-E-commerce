@@ -11,7 +11,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="w-[390px] h-[560px]" @click="GoToProduct(product?.id)">
+    <div class="productClass" @click="GoToProduct(product?.id)">
       <div class="w-full h-full">
         <img
           :src="
@@ -89,7 +89,7 @@ export default {
       this.isAnimating = true;
     },
     GoToProduct(id) {
-      console.log(id);
+      //console.log(id);
       this.$router.push(`/product/${id}`);
     },
     getImageUrl(imagePath) {
@@ -115,7 +115,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 @keyframes scale-up {
   0% {
     transform: scale(1);
@@ -130,5 +130,9 @@ export default {
 
 .animate-icon {
   animation: scale-up 0.3s ease-in-out;
+}
+.productClass {
+  width: 390px;
+  height: 560px;
 }
 </style>

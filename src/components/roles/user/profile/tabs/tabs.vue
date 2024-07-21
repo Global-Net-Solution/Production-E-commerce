@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     onSelect(e) {
-      console.log(e);
+      //console.log(e);
       if(e.selected == 2 ){
         this.$router.push('/whishlist')
       }

@@ -51,7 +51,7 @@ export default {
     from: String,
   },
   mounted() {
-    // console.log("color" + this.colors);
+    // //console.log("color" + this.colors);
   },
   components: {
     Slide,
@@ -100,7 +100,7 @@ export default {
         new URL("", import.meta.url).origin +
         "/assets/assets/dataImg/colors/" +
         imagePath;
-      console.log(url);
+      //console.log(url);
       // var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
       return url;
     },

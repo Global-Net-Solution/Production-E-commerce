@@ -212,7 +212,7 @@ export default {
   },
   watch: {
     description(newVal) {
-      console.log(newVal);
+      //console.log(newVal);
     },
   },
   methods: {
