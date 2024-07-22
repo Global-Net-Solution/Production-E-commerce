@@ -129,7 +129,11 @@
           class="basis-[22%]"
           @click="GoToProduct(product.id)"
           :product="product"
-          v-for="product in filteredProducts"
+          v-for="product in filteredProducts?.slice(
+            $store.getters.getSkipPage,
+            $store.getters.getPageSize *
+              ($store.getters.getSkipPage / $store.getters.getPageSize + 1)
+          )"
           :key="product.id"
           :colorsSelectedObj="colorsSelectedObj"
         />
@@ -170,9 +174,15 @@ export default {
       buttonCount: 5,
       type: "numeric",
       info: true,
-      pageSizes: [10, 15, 20],
       previousNext: true,
-      total: 200,
+      skip: this.$store.getters["getSkipPage"],
+      take: this.$store.getters["getPageSize"],
+      buttonCount: 5,
+      type: "numeric",
+      info: false,
+      pageSizes: true,
+      previousNext: true,
+      total: this.$store.getters["getTotalCount"],
       pageSizeDefs: [5, 10, 20],
       width: 768,
       categories: categories.mainCategories,
@@ -314,6 +324,12 @@ export default {
     GoToProduct(id) {
       this.$router.push(`/product/${id}`);
     },
+    handlePageChange: function (event) {
+      this.skip = event.skip;
+      this.take = event.take;
+      this.$store.dispatch("setSkipPage", event.skip);
+      this.$store.dispatch("setPageSize", event.take);
+    },
   },
   components: {
     card,
@@ -322,7 +338,7 @@ export default {
   },
   computed: {
     filteredProducts() {
-      return this.products.filter((product) => {
+      var allfiltered = this.products.filter((product) => {
         if (
           this.subCategoriesChecked.length > 0 &&
           !this.subCategoriesChecked.some((subcategory) =>
@@ -352,6 +368,10 @@ export default {
 
         return true;
       });
+      this.total = allfiltered.length;
+      this.$store.dispatch("setTotalCount", allfiltered.length);
+
+      return allfiltered;
     },
   },
 };
