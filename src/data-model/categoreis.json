@@ -3,47 +3,49 @@
     {
       "id": 1,
       "name": "Scrub",
+      "img": "pants.png",
       "subCategories": [
         {
           "id": 1,
           "name": "Scrub Tops",
-          "src" : "top.png"
+          "src": "top.png"
         },
         {
           "id": 2,
           "name": "Scrub Pants",
-          "src" : "pants.png"
-
+          "src": "pants.png"
         },
         {
           "id": 3,
           "name": "Scrub Leggings",
-          "src" : "pantsL.png"
+          "src": "pantsL.png"
         }
       ]
     },
     {
       "id": 2,
       "name": "Outerwear",
+      "img": "Jackets.png",
       "subCategories": [
         {
           "id": 4,
-          "name": "jackets"
-          ,"src" : "Jackets.png"
+          "name": "jackets",
+          "src": "Jackets.png"
         }
       ]
     },
     {
       "id": 3,
       "name": "Layering Essentials",
+      "img": "labCoat.png",
       "subCategories": [
         {
           "id": 5,
-          "name": "Lab Coats"
-          ,"src" : "labCoat.png"
+          "name": "Lab Coats",
+          "src": "labCoat.png"
         }
       ]
     },
-    { "id": 4, "name": "Accessories" }
+    { "id": 4, "name": "Accessories", "img": "pants.png" }
   ]
 }

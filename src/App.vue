@@ -18,11 +18,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-console.log(app);
+//console.log(app);
 const messaging = getMessaging();
 
 onMessage(messaging, (payload) => {
-  console.log(payload);
+  //console.log(payload);
 });
 </script>
 <script>

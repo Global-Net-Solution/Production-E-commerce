@@ -20,6 +20,7 @@
 body {
   background-color: #fff;
   color: #000;
+  /* overflow: hidden; */
 }
 *:not(button) {
   border-color: #e5e7eb !important;
@@ -40,4 +41,7 @@ body {
   border-radius: 10px;
   background: #797979;
   height: 20px;
+}
+.custom-scrollbar ::-webkit-scrollbar-thumb{
+   background: transparent !important;
 }

@@ -1,8 +1,8 @@
 <template>
-  <div class="flex justify-between px-28">
-    <div class="basis-[18%]">
+  <div class="flex">
+    <div class="w-[25%] h-full overflow-auto px-8 pt-28 sm:hidden md:hidden">
       <div class="w-full">
-        <div
+        <!-- <div
           class="relative flex items-center justify-between w-full mb-5 -left-2"
         >
           <KInput
@@ -12,7 +12,7 @@
             :placeholder="'Search Categories...'"
             :rounded="'large'"
           ></KInput>
-        </div>
+        </div> -->
         <h1>Category</h1>
         <ul class="my-5">
           <li
@@ -105,22 +105,28 @@
         Reset Filter
       </div>
     </div>
-    <div class="basis-[80%]">
-      <div class="flex w-full px-2">
-        <div class="basis-[50%] overflow-hidden">
+    <div class="relative w-full h-full pt-8 overflow-auto top-20">
+      <div
+        class="flex w-full px-2 fixed z-[9999] py-5 items-center top-20 bg-white"
+      >
+        <div class="flex items-center justify-between w-full overflow-hidden">
           <ul class="flex gap-3">
             <li
-              class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-100 hover:bg-customGray-200"
+              class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-200 hover:bg-customGray-300"
               v-for="item in subCategoriesChecked"
               :key="item?.id"
             >
               {{ item?.name }}
             </li>
           </ul>
+          <div
+            class="flex items-center justify-end gap-3 px-3 py-2 text-xs border rounded-lg cursor-pointer w-fit"
+            @click="SideMenuTogle"
+          >
+            <img :src="filterIcon" alt="filter-Icon" class="w-4 h-4" />
+            <p>Filter</p>
+          </div>
         </div>
-      </div>
-      <div class="flex justify-end w-full px-2">
-        <p class="text-xs text-customGray-400">234,567 results</p>
       </div>
       <div
         class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap"
@@ -153,11 +159,135 @@
         </pager>
       </div>
     </div>
+    <transition name="fade">
+      <div v-if="SideMenuShow" class="lg:hidden">
+        <div
+          class="fixed right-0 z-[9999999999999] w-full h-screen bg-black opacity-50 top-0"
+        ></div>
+        <div
+          class="absolute h-screen bg-white right-0 top-20 z-[999999999999] w-[55vh] py-5 overflow-x-auto"
+        >
+          <div class="px-10 py-5">
+            <div class="w-full">
+              <div
+                class="relative flex items-center justify-between w-full mb-5 -left-2"
+              >
+                <KInput
+                  :style="{ width: '100%' }"
+                  :size="'small'"
+                  :class="'custom-input'"
+                  :placeholder="'Search Categories...'"
+                  :rounded="'large'"
+                ></KInput>
+              </div>
+              <h1>Category</h1>
+              <ul class="my-5">
+                <li
+                  class="mb-3 text-sm"
+                  v-for="category in categories"
+                  :key="category.id"
+                >
+                  <div class="flex items-center justify-between">
+                    <li
+                      @click="changeMainCategoryChecked(category)"
+                      class="flex items-center gap-1 cursor-pointer"
+                    >
+                      <checkbox class="mb-1" :value="category.isChecked" />
+                      <p>{{ category.name }}</p>
+                    </li>
+
+                    <div @click="category.isOpened = !category.isOpened">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                  </div>
+
+                  <ul
+                    class="flex flex-col justify-start px-5 mt-1"
+                    v-for="subCategory in category.subCategories"
+                    :key="subCategory.id"
+                    v-if="category.isOpened"
+                  >
+                    <li
+                      @click="changeSubCategoryChecked(category, subCategory)"
+                      class="flex items-center gap-1 cursor-pointer"
+                    >
+                      <checkbox class="mb-1" :value="subCategory.isChecked" />
+                      <p>{{ subCategory.name }}</p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <p class="text-xs" v-if="categories.length > 5">
+                Show More <i class="fa-solid fa-chevron-down"></i>
+              </p>
+            </div>
+
+            <div class="w-full my-8">
+              <h2 class="mb-3 text-lg">Color</h2>
+              <Tooltip :position="position" :anchor-element="anchor"> </Tooltip>
+              <ul class="flex flex-wrap w-full gap-2">
+                <li
+                  v-for="color in colors"
+                  :key="color.id"
+                  :title="color.name"
+                  @click="colorsSelected(color)"
+                  class="rounded-full p-1 relative border !border-transparent hover:!border-[#000]"
+                  :class="{
+                    '!border-[#000] checkColor':
+                      colorsSelectedObj?.id === color?.id,
+                  }"
+                >
+                  <p
+                    class="w-5 h-5 p-2 rounded-full"
+                    :style="{ backgroundColor: color.code }"
+                  ></p>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full my-8">
+              <h2 class="mb-3 text-lg">Size</h2>
+              <ul class="flex flex-wrap items-center w-full gap-1">
+                <li
+                  class="w-10 px-2 py-1 mb-2 text-sm text-center duration-100 border rounded cursor-pointer hover:bg-gray-100 hover:text-black"
+                  v-for="size in sizes"
+                  :key="size.id"
+                  @click="sizesSelected(size)"
+                  :class="{
+                    'bg-black text-white hover:text-white hover:bg-black':
+                      sizeSelectedList.some((ele) => ele.id === size.id),
+                  }"
+                >
+                  {{ size.name }}
+                </li>
+              </ul>
+            </div>
+            <div
+              class="p-2 px-3 mb-5 text-sm border rounded cursor-pointer w-fit"
+              @click="resetAllFilters"
+              v-if="
+                sizeSelectedList.length > 0 ||
+                colorsSelectedObj != null ||
+                subCategoriesChecked.length > 0
+              "
+            >
+              Reset Filter
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute px-6 right-[58vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer"
+          @click="SideMenuTogle"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import searchIcon from "../../../../assets/icons/h-search.svg";
+import filterIcon from "../../../../assets/icons/filter.svg";
 import card from "../../../../components/roles/user/home/productCard/mainView.vue";
 import { Pager } from "@progress/kendo-vue-data-tools";
 import categories from "../../../../data-model/categoreis.json";
@@ -168,9 +298,22 @@ import { Tooltip } from "@progress/kendo-vue-tooltip";
 export default {
   data() {
     return {
+      testData: [
+        { id: 1, name: "Item 1" },
+        { id: 2, name: "Item 2" },
+        { id: 3, name: "Item 3" },
+        { id: 4, name: "Item 4" },
+        { id: 5, name: "Item 5" },
+        { id: 6, name: "Item 6" },
+        { id: 7, name: "Item 7" },
+        { id: 8, name: "Item 8" },
+        { id: 9, name: "Item 9" },
+        { id: 10, name: "Item 10" },
+      ],
       searchIcon,
+      filterIcon,
       skip: 0,
-      take: 5,
+      take: 8,
       buttonCount: 5,
       type: "numeric",
       info: true,
@@ -192,11 +335,22 @@ export default {
       colors: colors.colors,
       sizes: sizes.size,
       products: products.products,
+      SideMenuShow: false,
     };
   },
 
   mounted() {
+    //console.log("mounted",localStorage.getItem('filterBySubCategory'))
+    this.$store.dispatch(
+      "setfilterBySubCategory",
+      JSON.parse(localStorage.getItem("filterBySubCategory"))
+    );
+    //console.log("dispt",this.$store.getters.getfilterBySubCategory)
     if (this.$store.getters.getfilterBySubCategory != undefined) {
+      // //console.log(
+      //   "hit this.$store.getters.getfilterBySubCategory",
+      //   this.$store.getters.getfilterBySubCategory
+      // );
       this.subCategoriesChecked.push(
         this.$store.getters.getfilterBySubCategory
       );
@@ -223,6 +377,9 @@ export default {
         }),
       };
     });
+  this.total=this.products.length;
+  
+  
   },
   methods: {
     changeMainCategoryChecked(category) {
@@ -230,7 +387,7 @@ export default {
       category.subCategories.forEach((cat) => {
         cat.isChecked = category.isChecked;
       });
-      category.isOpened = !category.isOpened;
+      category.isOpened = category.isChecked;
 
       if (category.isChecked) {
         category.subCategories?.map((subCategory) => {
@@ -321,6 +478,7 @@ export default {
         });
       });
     },
+  
     GoToProduct(id) {
       this.$router.push(`/product/${id}`);
     },
@@ -329,6 +487,10 @@ export default {
       this.take = event.take;
       this.$store.dispatch("setSkipPage", event.skip);
       this.$store.dispatch("setPageSize", event.take);
+    },
+    SideMenuTogle() {
+      //console.log(this.SideMenuShow);
+      this.SideMenuShow = !this.SideMenuShow;
     },
   },
   components: {

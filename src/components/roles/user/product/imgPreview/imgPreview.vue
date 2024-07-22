@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     ImgList(currentColor = this.colors[0].color) {
-      console.log(this.colors);
+      //console.log(this.colors);
       this.ImageListPreview = this.colors?.find(
         (color) => color.color === currentColor
       );
@@ -90,7 +90,7 @@ export default {
       this.colorsSelected = color;
     },
     currentImg(img, index) {
-      console.log(img);
+      //console.log(img);
       this.currentIndex = index;
       this.selectedImg = img;
     },

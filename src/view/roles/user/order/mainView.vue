@@ -391,7 +391,7 @@ export default {
       this.selectedDate = dateId;
     },
     Copy(element) {
-      console.log(element)
+      //console.log(element)
       this.open = true;
       // navigator.clipboard.writeText(this.key);
       this.showTooltip(element);
@@ -403,7 +403,7 @@ export default {
       }, 400);
       this.open = true;
       this.targetElement = element;
-      // console.log(element.text);
+      // //console.log(element.text);
     },
   },
 };

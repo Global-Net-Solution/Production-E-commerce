@@ -5,6 +5,7 @@ export default {
     screens: {
       sm: { min: "100px", max: "640px" },
       md: { min: "641px", max: "1150px" },
+      lg: { min: "1151px" },
     },
     extend: {
       colors: {
