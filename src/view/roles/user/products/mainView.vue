@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="w-[25%] h-full overflow-auto px-8 pt-28 sm:hidden md:hidden">
+    <div class="w-[18%] h-[60vh] fixed px-8 pt-28 sm:hidden md:hidden">
       <div class="w-full">
         <!-- <div
           class="relative flex items-center justify-between w-full mb-5 -left-2"
@@ -105,11 +105,11 @@
         Reset Filter
       </div>
     </div>
-    <div class="relative w-full h-full pt-8 overflow-auto top-20">
+    <div class="relative w-[82%] h-full pt-8 overflow-auto top-20 left-[18%]">
       <div
         class="flex w-full px-2 fixed z-[9999] py-5 items-center top-20 bg-white"
       >
-        <div class="flex items-center justify-between w-full overflow-hidden">
+        <div class="flex items-center justify-between w-full overflow-hidden flex-wrap">
           <ul class="flex gap-3">
             <li
               class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-200 hover:bg-customGray-300"
@@ -166,7 +166,7 @@
           @click="SideMenuTogle"
         ></div>
         <div
-          class="absolute h-screen bg-white right-0 top-20 z-[999999999999] w-[55vw] py-5 overflow-x-auto sm:w-[65vw] md:w-[45vw]"
+          class="fixed h-screen bg-white right-0 top-20 z-[999999999999] w-[55vw] py-5 overflow-x-auto sm:w-[65vw] md:w-[45vw]"
         >
           <div class="px-10 py-5">
             <div class="w-full">
@@ -265,7 +265,7 @@
           </div>
         </div>
         <div
-          class="absolute px-6 right-[55vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer sm:right-[65vw] md:right-[45vw]"
+          class="fixed px-6 right-[55vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer sm:right-[65vw] md:right-[45vw]"
           @click="SideMenuTogle"
         >
           <i class="fa-solid fa-xmark"></i>
