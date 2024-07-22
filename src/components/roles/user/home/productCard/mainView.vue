@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[650px] w-full relative">
+  <div class="min-h-[650px] w-full relative h-auto">
     <div>
       <div
         class="absolute z-10 w-8 h-8 p-1 text-center bg-white rounded-full cursor-pointer right-2 top-2"
@@ -11,7 +11,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="productClass" @click="GoToProduct(product?.id)">
+    <div class="w-[390px] h-[560px] sm:w-[310px] pl-[13px]" @click="GoToProduct(product?.id)">
       <div class="w-full h-full">
         <img
           :src="
@@ -25,7 +25,7 @@
       </div>
       <div>
         <div class="py-3">
-          <h4>{{ product?.name }}</h4>
+          <h4 class="sm:text-sm">{{ product?.name }}</h4>
           <div class="flex items-center gap-1"></div>
           <div class="flex flex-col justify-between">
             <div class="flex flex-col" v-if="discount">
@@ -131,8 +131,5 @@ export default {
 .animate-icon {
   animation: scale-up 0.3s ease-in-out;
 }
-.productClass {
-  width: 390px;
-  height: 560px;
-}
+
 </style>

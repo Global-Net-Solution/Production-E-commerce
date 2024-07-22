@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full h-full gap-3">
+  <div class="flex w-full h-full gap-3 sm:flex-col-reverse">
     <div class="overflow-hidden">
       <base-button
         :size="'small'"
@@ -7,7 +7,7 @@
         v-show="false"
         ><i class="fa-solid fa-chevron-down"></i
       ></base-button>
-      <ul class="flex flex-col gap-2">
+      <ul class="flex flex-col gap-2 sm:flex-row">
         <li
           class="relative w-20 cursor-pointer h-1/4 "
           v-for="(img, index) in ImageListPreview.imgs"

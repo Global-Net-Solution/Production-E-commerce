@@ -65,7 +65,7 @@
             @click="SideMenuTogle"
           ></div>
           <div
-            class="absolute h-screen bg-white left-0 top-0 z-[999] w-[55vw] py-5"
+            class="absolute h-screen bg-white left-0 top-0 z-[999] w-[265px] py-5"
           >
             <ul class="flex gap-4 text-sm px-3 border-b pb-5" v-if="!showItems">
               <li>
@@ -117,7 +117,7 @@
                 </li>
               </ul>
             </div>
-            <div class="flex flex-wrap h-full" v-if="showItems">
+            <div class="flex flex-wrap " v-if="showItems">
               <div
                 v-for="(item, index) in selectedItem"
                 :key="index"
@@ -132,7 +132,7 @@
             </div>
           </div>
           <div
-            class="absolute px-6 left-[55vw] top-0 z-[99999] py-5 bg-[#00000080] text-white cursor-pointer"
+            class="absolute p-2 left-[265px] top-0 z-[99999]  bg-[#00000080] text-white cursor-pointer"
             @click="SideMenuTogle"
           >
             <i class="fa-solid fa-xmark"></i>

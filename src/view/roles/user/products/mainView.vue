@@ -1,6 +1,8 @@
 <template>
   <div class="relative flex">
-    <div class="w-[18%] h-[70%] sticky top-0 right-0  overflow-auto px-8 pt-28 sm:hidden md:hidden">
+    <div
+      class="w-[18%] h-[70%] sticky top-0 right-0 overflow-auto px-8 pt-28 sm:hidden md:hidden"
+    >
       <div class="w-full">
         <!-- <div
           class="relative flex items-center justify-between w-full mb-5 -left-2"
@@ -71,7 +73,7 @@
           >
             <p
               class="w-5 h-5 p-2 rounded-full"
-              :style="{ backgroundColor: color.code }"
+              :style="{backgroundColor: color.code}"
             ></p>
           </li>
         </ul>
@@ -105,11 +107,13 @@
         Reset Filter
       </div>
     </div>
-    <div class="relative w-[82%] h-full pt-8 overflow-auto top-20">
+    <div class="relative w-[82%] h-full pt-8 overflow-auto top-20 sm:w-full">
       <div
         class="flex w-full px-2 fixed z-[9999] py-5 items-center top-20 bg-white"
       >
-        <div class="flex flex-wrap items-center justify-between w-full overflow-hidden">
+        <div
+          class="flex flex-wrap items-center justify-between w-full overflow-hidden"
+        >
           <ul class="flex gap-3">
             <li
               class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-200 hover:bg-customGray-300"
@@ -129,10 +133,10 @@
         </div>
       </div>
       <div
-        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap"
+        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0"
       >
         <card
-          class="basis-[22%]"
+          class="basis-[22%] sm:basis-full"
           @click="GoToProduct(product.id)"
           :product="product"
           v-for="product in filteredProducts?.slice(
@@ -166,7 +170,7 @@
           @click="SideMenuTogle"
         ></div>
         <div
-          class="fixed h-screen bg-white right-0 top-20 z-[999999999999] w-[55vw] py-5 overflow-x-auto sm:w-[65vw] md:w-[45vw]"
+          class="fixed h-screen bg-white right-0 top-20 z-[999999999999] w-[265px] py-5 overflow-x-auto"
         >
           <div class="px-10 py-5">
             <div class="w-full">
@@ -229,7 +233,7 @@
                 >
                   <p
                     class="w-5 h-5 p-2 rounded-full"
-                    :style="{ backgroundColor: color.code }"
+                    :style="{backgroundColor: color.code}"
                   ></p>
                 </li>
               </ul>
@@ -265,7 +269,7 @@
           </div>
         </div>
         <div
-          class="fixed px-6 right-[55vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer sm:right-[65vw] md:right-[45vw]"
+          class="fixed right-[265px] top-20 z-[999999999999] p-2 bg-[#00000080] text-white cursor-pointer"
           @click="SideMenuTogle"
         >
           <i class="fa-solid fa-xmark"></i>
@@ -279,26 +283,26 @@
 import searchIcon from "../../../../assets/icons/h-search.svg";
 import filterIcon from "../../../../assets/icons/filter.svg";
 import card from "../../../../components/roles/user/home/productCard/mainView.vue";
-import { Pager } from "@progress/kendo-vue-data-tools";
+import {Pager} from "@progress/kendo-vue-data-tools";
 import categories from "../../../../data-model/categoreis.json";
 import colors from "../../../../data-model/colors.json";
 import sizes from "../../../../data-model/sizes.json";
 import products from "../../../../data-model/products.json";
-import { Tooltip } from "@progress/kendo-vue-tooltip";
+import {Tooltip} from "@progress/kendo-vue-tooltip";
 export default {
   data() {
     return {
       testData: [
-        { id: 1, name: "Item 1" },
-        { id: 2, name: "Item 2" },
-        { id: 3, name: "Item 3" },
-        { id: 4, name: "Item 4" },
-        { id: 5, name: "Item 5" },
-        { id: 6, name: "Item 6" },
-        { id: 7, name: "Item 7" },
-        { id: 8, name: "Item 8" },
-        { id: 9, name: "Item 9" },
-        { id: 10, name: "Item 10" },
+        {id: 1, name: "Item 1"},
+        {id: 2, name: "Item 2"},
+        {id: 3, name: "Item 3"},
+        {id: 4, name: "Item 4"},
+        {id: 5, name: "Item 5"},
+        {id: 6, name: "Item 6"},
+        {id: 7, name: "Item 7"},
+        {id: 8, name: "Item 8"},
+        {id: 9, name: "Item 9"},
+        {id: 10, name: "Item 10"},
       ],
       searchIcon,
       filterIcon,
@@ -367,9 +371,7 @@ export default {
         }),
       };
     });
-  this.total=this.products.length;
-  
-  
+    this.total = this.products.length;
   },
   methods: {
     changeMainCategoryChecked(category) {
@@ -468,7 +470,7 @@ export default {
         });
       });
     },
-  
+
     GoToProduct(id) {
       this.$router.push(`/product/${id}`);
     },

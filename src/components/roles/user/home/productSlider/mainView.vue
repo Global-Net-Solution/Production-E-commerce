@@ -2,12 +2,12 @@
   <div class="flex items-center justify-center w-full">
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="flex items-center justify-center w-[100%] gap-4 px-10 flex-wrap"
+        class="flex items-center justify-center w-[100%] gap-4 px-10 flex-wrap sm:px-0"
       >
         <card
           v-for="(product, inx) in paginatedProducts"
           :key="inx"
-          class="basis-[19%]"
+          class="basis-[19%] sm:basis-full"
           :id="product.id"
           :img="getImageUrl(product.src)"
           :name="product.name"

@@ -1,13 +1,13 @@
 <template>
-  <div class="relative py-10 px-28 top-20">
-    <div class="flex w-full h-screen gap-10">
+  <div class="relative py-10 px-28 top-20 sm:px-5">
+    <div class="flex w-full h-screen gap-10 sm:flex-col">
       <imgPreview
         class="w-[50%]"
         :colors="product?.colors"
         :currentColor="currentColor"
       />
       <productDetails
-        class="w-[30%] h-screen"
+        class="w-[30%] h-screen sm:w-full"
         :product="product"
         :colors="product?.colors"
         @colorSelected="colorSelected"

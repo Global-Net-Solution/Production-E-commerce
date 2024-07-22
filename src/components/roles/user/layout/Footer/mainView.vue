@@ -1,43 +1,16 @@
 <template>
   <div class="border-t w-full">
     <div class="px-28 py-5 sm:px-5 md:px-10">
-      <div class="flex justify-between pb-5 border-b ">
-        <div class="w-1/4">
+      <div class="flex justify-between pb-5 border-b sm:flex-col sm:gap-5">
+        <div class="w-full">
           <h5 class="mb-3 font-semibold">{{ $t("BuyMenu.title") }}</h5>
           <ul class="inter">
             <li class="w-fit" v-for="category in categoreis" :key="category.id">
               <a href="" class="animated-link">{{ category.name }}</a>
             </li>
-            <!-- <li class="w-fit">
-              <a href="" class="animated-link">{{
-                $t("BuyMenu?.Registration")
-              }}</a>
-            </li>
-            <li class="w-fit">
-              <a href="" class="animated-link">{{
-                $t("BuyMenu?.Protection")
-              }}</a>
-            </li>
-            <li class="w-fit">
-              <a href="" class="animated-link">{{ $t("BuyMenu?.Help") }}</a>
-            </li> -->
           </ul>
         </div>
-        <!-- <div class="w-1/4">
-          <h5 class="mb-3 font-semibold">Sell</h5>
-          <ul class="inter">
-            <li>
-              <a href="">Start selling</a>
-            </li>
-            <li>
-              <a href="">Shopin Seller Protection</a>
-            </li>
-            <li>
-              <a href="">Learn to sell</a>
-            </li>
-          </ul>
-        </div> -->
-        <div class="w-1/4">
+        <div class="w-full">
           <h5 class="mb-3 font-semibold">{{ $t("about.title") }}</h5>
           <ul class="inter">
             <li class="w-fit">
@@ -51,7 +24,7 @@
             </li>
           </ul>
         </div>
-        <div class="w-1/4">
+        <div class="w-full">
           <h5 class="mb-3 font-semibold">{{ $t("help.title") }}</h5>
           <ul class="inter">
             <li class="w-fit font-semibold">Email</li>
@@ -83,7 +56,7 @@
         </div>
       </div>
       <div class="w-full flex py-4 justify-between items-center">
-        <div class="flex w-full justify-between items-center">
+        <div class="flex w-full justify-between items-center sm:flex-col sm:gap-5">
           <ul class="flex gap-2">
             <li>
               <a href="" class="px-3 py-1 border rounded-lg text-sm"
@@ -107,7 +80,7 @@
             </li>
           </ul>
           <div class="w-full text-center inter text-xs text-customGray-500">
-            <p class="text-right">
+            <p class="text-right sm:text-center">
               Copyright 2014 Royal Scrubs Inc. All rights reserved.
               <span class="text-primary-100">User agreement</span>,
               <span class="text-primary-100">Privacy</span> and
