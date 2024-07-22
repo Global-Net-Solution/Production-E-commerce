@@ -1,14 +1,14 @@
 <template>
   <transition name="item">
     <div
-      class="flex flex-col items-center justify-center gap-1 mb-5"
+      class="flex flex-col items-center justify-center gap-1 mb-5 "
       @click="goToProducts"
     >
       <div class="flex items-center justify-center rounded-full w-28 h-28">
         <img :src="src" :alt="'Avatar Image'" class="w-20 h-20 rounded-full" />
       </div>
       <div>
-        <h1 class="text-sm">{{ header }}</h1>
+        <h1 class="text-sm sm:text-xs">{{ header }}</h1>
       </div>
     </div>
   </transition>

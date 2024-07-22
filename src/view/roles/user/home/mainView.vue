@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <div class="px-28 m-h-[50vh]">
+  <div class="relative top-20">
+    <div class="px-28">
       <HeroSection />
     </div>
-    <div class="w-full flex justify-center py- relative z-10 ">
+    <div class="w-full flex justify-center relative z-10">
       <imgSlider />
     </div>
-    <div class="w-full px-8 min-h-[500px] py-5">
+    <div class="w-full px-8  py-20">
       <div class="px-20 mb-5 flex items-center justify-between">
         <h2 class="text-2xl font-semibold">Today’s Deals</h2>
         <router-link to="/products" class="text-sm text-primary-100"

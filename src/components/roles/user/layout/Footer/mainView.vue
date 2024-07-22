@@ -1,11 +1,11 @@
 <template>
   <div class="border-t w-full">
-    <div class="px-28 py-5">
-      <div class="flex justify-between pb-5 border-b">
+    <div class="px-28 py-5 sm:px-5 md:px-10">
+      <div class="flex justify-between pb-5 border-b ">
         <div class="w-1/4">
           <h5 class="mb-3 font-semibold">{{ $t("BuyMenu.title") }}</h5>
           <ul class="inter">
-            <li class="w-fit" v-for="category in categoreis">
+            <li class="w-fit" v-for="category in categoreis" :key="category.id">
               <a href="" class="animated-link">{{ category.name }}</a>
             </li>
             <!-- <li class="w-fit">

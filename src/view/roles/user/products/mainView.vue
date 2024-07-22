@@ -163,23 +163,13 @@
       <div v-if="SideMenuShow" class="lg:hidden">
         <div
           class="fixed right-0 z-[9999999999999] w-full h-screen bg-black opacity-50 top-0"
+          @click="SideMenuTogle"
         ></div>
         <div
-          class="absolute h-screen bg-white right-0 top-20 z-[999999999999] w-[55vh] py-5 overflow-x-auto"
+          class="absolute h-screen bg-white right-0 top-20 z-[999999999999] w-[55vw] py-5 overflow-x-auto sm:w-[65vw] md:w-[45vw]"
         >
           <div class="px-10 py-5">
             <div class="w-full">
-              <div
-                class="relative flex items-center justify-between w-full mb-5 -left-2"
-              >
-                <KInput
-                  :style="{ width: '100%' }"
-                  :size="'small'"
-                  :class="'custom-input'"
-                  :placeholder="'Search Categories...'"
-                  :rounded="'large'"
-                ></KInput>
-              </div>
               <h1>Category</h1>
               <ul class="my-5">
                 <li
@@ -275,7 +265,7 @@
           </div>
         </div>
         <div
-          class="absolute px-6 right-[58vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer"
+          class="absolute px-6 right-[55vw] top-20 z-[999999999999] py-5 bg-[#00000080] text-white cursor-pointer sm:right-[65vw] md:right-[45vw]"
           @click="SideMenuTogle"
         >
           <i class="fa-solid fa-xmark"></i>

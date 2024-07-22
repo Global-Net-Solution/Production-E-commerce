@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-10 flex items-center justify-center w-full">
+  <div class="flex items-center justify-center w-full">
     <Push :appear="show" v-if="animationType === 'push'">
       <div
         class="flex items-center justify-center w-[100%] gap-4 px-10 flex-wrap"

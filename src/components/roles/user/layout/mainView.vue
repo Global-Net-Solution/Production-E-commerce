@@ -1,8 +1,8 @@
 <template>
   <div>
     <AppBar class="h-[20%]"/>
-    <router-view class="h-[1000px] overflow-auto custom-scrollbar " />
-    <Footer class="h-[30%]"/>
+    <router-view class=" overflow-auto custom-scrollbar" />
+    <Footer/>
   </div>
 </template>
 <script setup>

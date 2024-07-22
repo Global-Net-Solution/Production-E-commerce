@@ -62,6 +62,7 @@
         <div v-if="SideMenuShow">
           <div
             class="fixed left-0 z-30 w-full h-screen bg-black opacity-50 top-0"
+            @click="SideMenuTogle"
           ></div>
           <div
             class="absolute h-screen bg-white left-0 top-0 z-[999] w-[55vw] py-5"
@@ -72,7 +73,7 @@
                   >All</router-link
                 >
               </li>
-              <li
+              <!-- <li
                 class=""
                 v-for="(catgory, inx) in categories.mainCategories"
                 :key="inx"
@@ -80,7 +81,7 @@
                 <router-link to="/products" class="flex items-center">{{
                   catgory.name
                 }}</router-link>
-              </li>
+              </li> -->
             </ul>
             <div class="text-sm border-b pb-5 px-10" v-if="showItems">
               <div class="w-1/2 flex justify-between">
@@ -101,13 +102,13 @@
                   @click="selectItem(catgory)"
                 >
                   <div
-                    class="flex items-center justify-between px-5 py-2 pr-10"
+                    class="flex items-center justify-between px-5 py-2 pr-10 sm:text-xs sm:px-1"
                   >
-                    <div class="flex items-center gap-5">
+                    <div class="flex items-center gap-5 sm:gap-2">
                       <img
                         :src="getImageUrl(catgory.img)"
                         alt=""
-                        class="w-16 h-16 rounded-full"
+                        class="w-16 h-16 rounded-full sm:w-12 sm:h-12"
                       />
                       <p>{{ catgory.name }}</p>
                     </div>
@@ -284,5 +285,4 @@ input.k-input {
   right: 0;
   top: 5px;
 }
-
 </style>
