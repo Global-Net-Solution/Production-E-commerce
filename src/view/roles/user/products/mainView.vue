@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-    <div class="w-[18%] h-[60vh] fixed px-8 pt-28 sm:hidden md:hidden">
+  <div class="relative flex">
+    <div class="w-[18%] h-[70%] sticky top-0 right-0  overflow-auto px-8 pt-28 sm:hidden md:hidden">
       <div class="w-full">
         <!-- <div
           class="relative flex items-center justify-between w-full mb-5 -left-2"
@@ -105,11 +105,11 @@
         Reset Filter
       </div>
     </div>
-    <div class="relative w-[82%] h-full pt-8 overflow-auto top-20 left-[18%]">
+    <div class="relative w-[82%] h-full pt-8 overflow-auto top-20">
       <div
         class="flex w-full px-2 fixed z-[9999] py-5 items-center top-20 bg-white"
       >
-        <div class="flex items-center justify-between w-full overflow-hidden flex-wrap">
+        <div class="flex flex-wrap items-center justify-between w-full overflow-hidden">
           <ul class="flex gap-3">
             <li
               class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-200 hover:bg-customGray-300"
@@ -144,7 +144,7 @@
           :colorsSelectedObj="colorsSelectedObj"
         />
       </div>
-      <div class="w-full px-2 py-5 contryInfo">
+      <div class="relative w-full px-2 py-5 contryInfo">
         <pager
           :skip="skip"
           :take="take"

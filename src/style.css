@@ -42,6 +42,6 @@ body {
   background: #797979;
   height: 20px;
 }
-.custom-scrollbar ::-webkit-scrollbar-thumb{
+/* .custom-scrollbar ::-webkit-scrollbar-thumb{
    background: transparent !important;
-}
+} */

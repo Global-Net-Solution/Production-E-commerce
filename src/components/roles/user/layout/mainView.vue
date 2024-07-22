@@ -3,7 +3,7 @@
     <AppBar class="h-[20%]" />
     <div class="h-[80%]">
       <router-view class="custom-scrollbar" />
-      <Footer />
+      <Footer class="mt-[90px]"/>
     </div>
   </div>
 </template>

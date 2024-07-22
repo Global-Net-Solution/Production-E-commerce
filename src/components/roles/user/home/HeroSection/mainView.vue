@@ -1,14 +1,14 @@
 <template>
   <div class="flex justify-between w-full gap-5">
-    <div class="basis-[20%] ">
+    <div class="basis-[20%] sm:hidden">
       <img
         :src="heroImg"
         alt="hero-section-Img"
         class="w-full h-[450px] border-b object-cover"
       />
     </div>
-    <scrollView class="basis-[60%]" />
-    <div class="basis-[20%]">
+    <scrollView class="basis-[60%] h-[450px] sm:basis-full" />
+    <div class="basis-[20%] sm:hidden">
       <img
         :src="heroImg"
         alt="hero-section-Img"
