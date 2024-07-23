@@ -73,7 +73,7 @@
           >
             <p
               class="w-5 h-5 p-2 rounded-full"
-              :style="{backgroundColor: color.code}"
+              :style="{ backgroundColor: color.code }"
             ></p>
           </li>
         </ul>
@@ -133,7 +133,7 @@
         </div>
       </div>
       <div
-        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0"
+        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0 mt-14"
       >
         <card
           class="basis-[22%] sm:basis-full"
@@ -148,7 +148,10 @@
           :colorsSelectedObj="colorsSelectedObj"
         />
       </div>
-      <div class="relative w-full px-2 py-5 contryInfo">
+      <div
+        class="relative w-full px-2 py-5 contryInfo"
+        v-if="filteredProducts.length > 0"
+      >
         <pager
           :skip="skip"
           :take="take"
@@ -161,6 +164,17 @@
           @pagechange="handlePageChange"
         >
         </pager>
+      </div>
+      <div
+        class="w-full flex items-center justify-center flex-col"
+        v-if="filteredProducts.length == 0"
+      >
+        <i class="fa-solid fa-filter-circle-xmark text-6xl text-[#C0C0C0]"></i>
+        <h1 class="text-xl font-semibold">We couldn't find any item that match your filter criteria.</h1>
+        <p class="text-xs mt-2">
+          Try adjusting your filters: You may find what you're looking for by
+          changing your filters
+        </p>
       </div>
     </div>
     <transition name="fade">
@@ -233,7 +247,7 @@
                 >
                   <p
                     class="w-5 h-5 p-2 rounded-full"
-                    :style="{backgroundColor: color.code}"
+                    :style="{ backgroundColor: color.code }"
                   ></p>
                 </li>
               </ul>
@@ -283,26 +297,26 @@
 import searchIcon from "../../../../assets/icons/h-search.svg";
 import filterIcon from "../../../../assets/icons/filter.svg";
 import card from "../../../../components/roles/user/home/productCard/mainView.vue";
-import {Pager} from "@progress/kendo-vue-data-tools";
+import { Pager } from "@progress/kendo-vue-data-tools";
 import categories from "../../../../data-model/categoreis.json";
 import colors from "../../../../data-model/colors.json";
 import sizes from "../../../../data-model/sizes.json";
 import products from "../../../../data-model/products.json";
-import {Tooltip} from "@progress/kendo-vue-tooltip";
+import { Tooltip } from "@progress/kendo-vue-tooltip";
 export default {
   data() {
     return {
       testData: [
-        {id: 1, name: "Item 1"},
-        {id: 2, name: "Item 2"},
-        {id: 3, name: "Item 3"},
-        {id: 4, name: "Item 4"},
-        {id: 5, name: "Item 5"},
-        {id: 6, name: "Item 6"},
-        {id: 7, name: "Item 7"},
-        {id: 8, name: "Item 8"},
-        {id: 9, name: "Item 9"},
-        {id: 10, name: "Item 10"},
+        { id: 1, name: "Item 1" },
+        { id: 2, name: "Item 2" },
+        { id: 3, name: "Item 3" },
+        { id: 4, name: "Item 4" },
+        { id: 5, name: "Item 5" },
+        { id: 6, name: "Item 6" },
+        { id: 7, name: "Item 7" },
+        { id: 8, name: "Item 8" },
+        { id: 9, name: "Item 9" },
+        { id: 10, name: "Item 10" },
       ],
       searchIcon,
       filterIcon,
