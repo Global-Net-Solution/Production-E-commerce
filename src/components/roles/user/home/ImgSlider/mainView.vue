@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-[220px] items-center w-full">
     <div
-      class="absolute top-[40%] left-7 z-[999999] bg-white ml-5 min-w-10 min-h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
+      class="absolute top-[40%] left-7 sm:left-0 z-[999999] bg-white ml-5 min-w-10 min-h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
       v-if="!categories?.length < 12 && this.pageNumber > 1 && from != 'all'"
       @click="prev"
     >
@@ -11,9 +11,10 @@
         <i class="fa-solid fa-angle-left"></i>
       </button>
     </div>
+    <!-- {{ size }} -->
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="relative z-10 flex items-center justify-start w-full gap-10 overflow-x-hidden md:w-[600px] md:overflow-x-scroll sm:w-[300px] sm:overflow-x-scroll slider px-28"
+        class="relative z-10 flex items-center justify-center w-full gap-10 overflow-x-hidden sm:w-full sm:overflow-hidden slider px-28"
         :class="{ 'flex-wrap w-full': from == 'all' }"
       >
         <!-- {{ colors.length }} -->
@@ -30,7 +31,7 @@
     <div
       v-if="!categories?.length < 12 && from != 'all' && pageNumber < pageCount"
       @click="next"
-      class="absolute right-3 z-[999999] top-[40%]"
+      class="absolute right-3 z-[999999] top-[40%] sm:-right-1"
     >
       <button
         class="flex items-center justify-center w-10 h-10 mr-5 bg-white border rounded-full shadow-md border-1 text-customGray-400"
@@ -51,7 +52,8 @@ export default {
     from: String,
   },
   mounted() {
-    // //console.log("color" + this.colors);
+    this.updatePageSize();
+    window.addEventListener("resize", this.updatePageSize);
   },
   components: {
     Slide,
@@ -104,6 +106,19 @@ export default {
       // var url = "../../../../../../src/assets/dataImg/colors/" + imagePath;
       return url;
     },
+    updatePageSize() {
+      console.log("updatePageSize");
+      this.pageNumber = 1;
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 600) {
+        this.pageSize = 2; // for small screens
+      } else if (screenWidth < 1200) {
+        this.pageSize = 4; // for medium screens
+      } else {
+        this.pageSize = 8; // for large screens
+      }
+      console.log(this.pageSize);
+    },
   },
   computed: {
     paginatedColors() {
@@ -114,6 +129,10 @@ export default {
 
     pageCount() {
       return Math.ceil(this.colors.length / this.pageSize);
+    },
+
+    size() {
+      return window.innerWidth;
     },
   },
 };

@@ -7,7 +7,7 @@
         :currentColor="currentColor"
       />
       <productDetails
-        class="w-[30%] h-screen sm:w-full"
+        class="w-[30%]  sm:w-full"
         :product="product"
         :colors="product?.colors"
         @colorSelected="colorSelected"

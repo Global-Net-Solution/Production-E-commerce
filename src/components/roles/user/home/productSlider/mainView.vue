@@ -7,7 +7,7 @@
         <card
           v-for="(product, inx) in paginatedProducts"
           :key="inx"
-          class="basis-[19%] sm:basis-full"
+          class="basis-[19%] sm:basis-full flex justify-center"
           :id="product.id"
           :img="getImageUrl(product.src)"
           :name="product.name"
