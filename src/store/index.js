@@ -6,9 +6,7 @@ const store = createStore({
     return {
       SelectedOrdersTab: 2,
       filterBySubCategory:  null,
-      filterByColor: localStorage.getItem("filterByColor")
-        ? JSON.parse(localStorage.getItem("filterByColor"))
-        : null,
+      filterByColor: null,
       pageSize: 5,
       skipPage: 0,
       totalCount: 0,
