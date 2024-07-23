@@ -12,7 +12,7 @@
       <avatar
         :rounded="'full'"
         :type="'image'"
-        class="!w-32 !h-32 flex justify-center items-center  cursor-pointer"
+        class="!w-32 !h-32 flex justify-center items-center cursor-pointer sm:!w-[75px] sm:!h-[75px] md:!w-24 md:!h-24"
         :class="{ hidden: !isImageLoaded }"
       >
         <img
@@ -27,7 +27,7 @@
       </avatar>
     </div>
     <div>
-      <h3 class="font-bold">{{ name }}</h3>
+      <h3 class="font-bold sm:text-xs mt-1 min-w-max">{{ name }}</h3>
     </div>
   </div>
 </template>
@@ -46,7 +46,6 @@ export default {
   },
   data() {
     return {
-    
       isImageLoaded: false,
       // dummy,
     };

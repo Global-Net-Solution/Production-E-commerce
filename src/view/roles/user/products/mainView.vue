@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex">
+  <div class="relative flex customPager">
     <div
       class="w-[18%] h-[70%] sticky top-0 right-0 overflow-auto px-8 pt-28 sm:hidden md:hidden"
     >
@@ -136,7 +136,7 @@
         class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0 mt-14"
       >
         <card
-          class="basis-[22%] sm:basis-full"
+          class="basis-[22%] sm:basis-full sm:flex sm:justify-center"
           @click="GoToProduct(product.id)"
           :product="product"
           v-for="product in filteredProducts?.slice(
@@ -149,7 +149,7 @@
         />
       </div>
       <div
-        class="relative w-full px-2 py-5 contryInfo"
+        class="relative w-full px-2 py-5 contryInfo customPager"
         v-if="filteredProducts.length > 0"
       >
         <pager
@@ -170,7 +170,9 @@
         v-if="filteredProducts.length == 0"
       >
         <i class="fa-solid fa-filter-circle-xmark text-6xl text-[#C0C0C0]"></i>
-        <h1 class="text-xl font-semibold">We couldn't find any item that match your filter criteria.</h1>
+        <h1 class="text-xl font-semibold">
+          We couldn't find any item that match your filter criteria.
+        </h1>
         <p class="text-xs mt-2">
           Try adjusting your filters: You may find what you're looking for by
           changing your filters
@@ -348,24 +350,20 @@ export default {
   },
 
   mounted() {
-    //console.log("mounted",localStorage.getItem('filterBySubCategory'))
-    this.$store.dispatch(
-      "setfilterBySubCategory",
-      JSON.parse(localStorage.getItem("filterBySubCategory"))
-    );
-    //console.log("dispt",this.$store.getters.getfilterBySubCategory)
-    if (this.$store.getters.getfilterBySubCategory != undefined) {
-      // //console.log(
-      //   "hit this.$store.getters.getfilterBySubCategory",
-      //   this.$store.getters.getfilterBySubCategory
-      // );
+    if (this.$store.getters.getfilterBySubCategory != null) {
+      this.$store.dispatch(
+        "setfilterBySubCategory",
+        JSON.parse(localStorage.getItem("filterBySubCategory"))
+      );
       this.subCategoriesChecked.push(
         this.$store.getters.getfilterBySubCategory
       );
     }
+
     if (this.$store.getters.getfilterByColor != undefined) {
       this.colorsSelectedObj = this.$store.getters.getfilterByColor;
     }
+
     this.categories = this.categories.map((category) => {
       return {
         ...category,
@@ -459,6 +457,7 @@ export default {
     },
     colorsSelected(color) {
       this.colorsSelectedObj = color;
+      localStorage.setItem("filterByColor", JSON.stringify(color));
     },
     sizesSelected(size) {
       const exists = this.sizeSelectedList?.some(
@@ -538,7 +537,6 @@ export default {
       });
       this.total = allfiltered.length;
       this.$store.dispatch("setTotalCount", allfiltered.length);
-
       return allfiltered;
     },
   },
@@ -591,5 +589,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.k-selected {
+  background: #5cb1e2 !important;
+  color: #fff !important;
 }
 </style>

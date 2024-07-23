@@ -1,9 +1,9 @@
 <template>
   <div class="w-full h-[95px] bg-white pt-5 fixed top-0 z-[9999999]">
     <div
-      class="h-[30%] pb-10 pt-5 px-10 border-b flex items-center md:justify-between sm:justify-between sm:flex-row-reverse md:flex-row-reverse"
+      class="sm:pr-0 md:pr-0 h-[30%] pb-10 pt-5 px-10 border-b flex items-center md:justify-between sm:justify-between sm:flex-row-reverse md:flex-row-reverse"
     >
-      <div class="w-[200px] h-[60px]">
+      <div class="w-[200px] h-[60px] sm:w-[140px] md:w-[140px]">
         <div class="relative w-full h-full logo">
           <router-link to="/" class="">
             <img
@@ -284,5 +284,11 @@ input.k-input {
   position: absolute;
   right: 0;
   top: 5px;
+}
+
+@media (min-width: 100px)  and (max-width:1150px){
+  .logo ::after {
+    display: none;
+  }
 }
 </style>

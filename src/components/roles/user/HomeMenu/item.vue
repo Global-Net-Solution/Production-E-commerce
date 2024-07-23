@@ -1,10 +1,10 @@
 <template>
   <transition name="item">
     <div
-      class="flex flex-col items-center justify-center gap-1 mb-5 "
+      class="flex flex-col items-center justify-center gap-1 mb-5"
       @click="goToProducts"
     >
-      <div class="flex items-center justify-center rounded-full w-28 h-28">
+      <div class="flex items-center justify-center rounded-full w-28 h-28 sm:w-24 sm:h-24">
         <img :src="src" :alt="'Avatar Image'" class="w-20 h-20 rounded-full" />
       </div>
       <div>
@@ -28,17 +28,12 @@ export default {
   },
   methods: {
     goToProducts() {
-      //console.log("goToProducts", this.product);
       this.$store.dispatch("setfilterBySubCategory", this.product);
-      localStorage;
-      //console.log(this.$route.path);
-      //console.log(localStorage.getItem(""));
+
       if (this.$route.path != "/products") {
         this.$router.push("/products");
       } else {
-        //console.log("bug");
-       
-       window.location.reload();
+        window.location.reload();
       }
     },
   },

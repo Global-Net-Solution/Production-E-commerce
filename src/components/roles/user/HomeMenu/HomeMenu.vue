@@ -8,8 +8,9 @@
           v-for="(category, index) in categories"
           :key="index"
           class="p-1 rounded cursor-pointer hover:bg-customGray-700 m-w-full"
-          :class="{ 'bg-customGray-700': selectedCategoryid == category.id }"
+          :class="{ 'bg-customGray-700': selectedCategoryId == category.id }"
           @mouseover="showItems(category.subCategories, category.items2)"
+   
         >
           <div class="flex items-center justify-between px-3 py-2">
             <p>{{ category.name }}</p>
@@ -60,6 +61,7 @@ export default {
   },
   mounted() {
     this.getCategoriesItems(this.selectedCategoryid);
+    this.selectedCategoryId = this.selectedCategoryid;
   },
   computed: {},
   props: {
@@ -95,6 +97,7 @@ export default {
     showItems(items, items2) {
       this.selectedItem = items;
       this.selectedItem2 = items2;
+      // this.selectedCategoryId = null;
     },
   },
 };

@@ -108,9 +108,17 @@ export default {
     };
   },
   mounted() {
-    this.colorsSelectedObj = this.allColors.colors.filter((color) =>
+  
+   
+    if(this.$store.getters.getfilterByColor!=null){
+      this.colorsSelectedObj = this.allColors.colors.filter((color) =>
+      this.colors.some((productColor) => productColor.color === color.id)
+    )[this.colors.findIndex(item => item.color === this.$store.getters.getfilterByColor.id)];
+    }else{
+      this.colorsSelectedObj = this.allColors.colors.filter((color) =>
       this.colors.some((productColor) => productColor.color === color.id)
     )[0];
+    }
     this.sizesProduct = this.allSizes.size.filter((size) =>
       this.product.sizes.some((productSize) => productSize === size.id)
     );

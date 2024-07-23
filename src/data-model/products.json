@@ -138,7 +138,7 @@
     },
     {
       "id": "5",
-      "subCategoryzId": [1, 2],
+      "subCategoryzId": [1],
       "skus": "sz23122936607799745",
       "name": "Leon Three-Pocket Scrub Top",
       "decription": "Leon Three-Pocket Scrub Top",
@@ -172,7 +172,7 @@
     },
     {
       "id": "6",
-      "subCategoryzId": [3],
+      "subCategoryzId": [1],
       "skus": "sz23122936607799897",
       "name": "Chisec Three-Pocket Scrub Top™",
       "decription": "One of our all-time favorites (and yours, too), the tailored-fit FIONx Chisec™ features three pockets, including two ingeniously hidden side seam pockets.",
@@ -274,7 +274,7 @@
     },
     {
       "id": "9",
-      "subCategoryzId": [2, 3],
+      "subCategoryzId": [2],
       "skus": "sz2312293660779979",
       "name": "High Waisted Zamora Jogger Scrub Pants™",
       "decription": "Leon Three-Pocket Scrub Top",

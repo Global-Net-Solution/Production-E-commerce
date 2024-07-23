@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-[220px] items-center w-full">
+  <div class="flex h-[220px] items-center w-full sm:h-[140px]">
     <div
       class="absolute top-[40%] left-7 sm:left-0 z-[999999] bg-white ml-5 min-w-10 min-h-10 border border-1 text-customGray-400 rounded-full flex justify-center items-center shadow-md hover:text-primary-700"
       v-if="!categories?.length < 12 && this.pageNumber > 1 && from != 'all'"
@@ -14,7 +14,7 @@
     <!-- {{ size }} -->
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="relative z-10 flex items-center justify-center w-full gap-10 overflow-x-hidden sm:w-full sm:overflow-hidden slider px-28"
+        class="relative z-10 flex items-center justify-center w-full gap-10 sm:gap-3 overflow-x-hidden sm:w-full sm:overflow-hidden slider px-28"
         :class="{ 'flex-wrap w-full': from == 'all' }"
       >
         <!-- {{ colors.length }} -->
@@ -95,6 +95,7 @@ export default {
     },
     GoToProducts(item) {
       this.$store.dispatch("setfilterByColor", item);
+      this.$store.dispatch("setfilterBySubCategory", null);
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
@@ -107,17 +108,29 @@ export default {
       return url;
     },
     updatePageSize() {
-      console.log("updatePageSize");
       this.pageNumber = 1;
       const screenWidth = window.innerWidth;
-      if (screenWidth < 600) {
-        this.pageSize = 2; // for small screens
-      } else if (screenWidth < 1200) {
-        this.pageSize = 4; // for medium screens
-      } else {
-        this.pageSize = 8; // for large screens
+      var count = 0;
+      if (screenWidth > 1150) {
+        count = Math.floor(screenWidth / 128);
       }
-      console.log(this.pageSize);
+      else if( screenWidth > 640 && screenWidth < 1150){
+        count = Math.floor(screenWidth / 96);
+      }
+      else{
+        count = Math.floor(screenWidth / 75);
+      }
+      if (count >6) {
+        this.pageSize = count - 3;
+      } else {
+        if (screenWidth < 600 && screenWidth > 400) {
+          this.pageSize = 2;
+        } else if (screenWidth < 400) {
+          this.pageSize = 2;
+        } else {
+          this.pageSize = count - 2;
+        }
+      }
     },
   },
   computed: {

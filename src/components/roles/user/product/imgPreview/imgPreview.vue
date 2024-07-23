@@ -1,19 +1,19 @@
 <template>
-  <div class="flex w-full h-full gap-3 sm:flex-col-reverse">
-    <div class="overflow-hidden">
+  <div class="flex w-full h-full sm:flex-col-reverse justify-center">
+    <div class="overflow-hidden ml-20 mr-3 sm:ml-0 sm:mt-2">
       <base-button
         :size="'small'"
         class="!bg-white !border !border-primary-500 !rounded-lg w-full mb-3"
         v-show="false"
         ><i class="fa-solid fa-chevron-down"></i
       ></base-button>
-      <ul class="flex flex-col gap-2 sm:flex-row">
+      <ul class="flex flex-col gap-2 sm:flex-row sm:justify-center">
         <li
-          class="relative w-20 cursor-pointer h-1/4 "
+          class="relative w-20 cursor-pointer h-1/4"
           v-for="(img, index) in ImageListPreview.imgs"
           :key="index"
-          :class="{'imageLayer':currentIndex!=index}"
-          @click="currentImg(img,index)"
+          :class="{ imageLayer: currentIndex != index }"
+          @click="currentImg(img, index)"
         >
           <img
             :src="getImageUrl(img)"
@@ -22,17 +22,12 @@
           />
         </li>
       </ul>
-      <!-- <base-button
-        :size="'small'"
-        class="!bg-white !border !border-primary-500 !rounded-lg w-full mt-3"
-        ><i class="fa-solid fa-chevron-down"></i
-      ></base-button> -->
     </div>
-    <div class="w-full h-full">
+    <div class="w-[80%] sm:flex sm:w-full">
       <img
         :src="getImageUrl(selectedImg)"
         alt="product-Img"
-        class="object-cover w-full h-full"
+        class="object-contain w-full h-full"
       />
     </div>
   </div>
@@ -47,11 +42,22 @@ export default {
   data() {
     return {
       SelectedColorId: 8,
-      selectedImg:
-        this.colors &&
-        this.colors[
-          this.colors.findIndex((item) => item.color === this.colors[0].color)
-        ].imgs[0],
+      // selectedImg:
+      //   this.colors &&
+      //   this.colors[
+      //     this.colors.findIndex(
+      //       (item) =>
+      //         item.color ===
+      //         this.colors[
+      //           $store.getters.getfilterByColor.id != null
+      //             ? this.colors.findIndex(
+      //                 (item) =>
+      //                   item.color === this.$store.getters.getfilterByColor.id
+      //               )
+      //             : 0
+      //         ].color
+      //     )
+      //   ].imgs[0],
       colorsSelected: null,
       ImageListPreview: [],
       currentIndex: 0,
@@ -69,10 +75,41 @@ export default {
 
   computed: {},
   mounted() {
+    if (this.$store.getters.getfilterByColor != null) {
+      this.selectedImg =
+        this.colors &&
+        this.colors[
+          this.colors.findIndex(
+            (item) =>
+              item.color ===
+              this.colors[
+                this.colors.findIndex(
+                  (item) =>
+                    item.color === this.$store.getters.getfilterByColor.id
+                )
+              ].color
+          )
+        ].imgs[0];
+    } else {
+      this.selectedImg =
+        this.colors &&
+        this.colors[
+          this.colors.findIndex((item) => item.color === this.colors[0].color)
+        ].imgs[0];
+    }
+
     this.ImgList();
   },
   methods: {
-    ImgList(currentColor = this.colors[0].color) {
+    ImgList(
+      currentColor = this.$store.getters.getfilterByColor != null
+        ? this.colors[
+            this.colors.findIndex(
+              (item) => item.color === this.$store.getters.getfilterByColor.id
+            )
+          ].color
+        : this.colors[0].color
+    ) {
       //console.log(this.colors);
       this.ImageListPreview = this.colors?.find(
         (color) => color.color === currentColor
