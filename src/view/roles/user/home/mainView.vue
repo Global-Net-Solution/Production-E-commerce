@@ -34,6 +34,7 @@ export default {
   methods:{
     goToProducts(){
       this.$store.dispatch("setfilterBySubCategory", null);
+      this.$store.dispatch("setfilterByColor", null);
     }
   }
 };

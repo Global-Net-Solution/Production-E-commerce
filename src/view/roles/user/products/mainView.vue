@@ -15,6 +15,17 @@
             :rounded="'large'"
           ></KInput>
         </div> -->
+        <div
+          class=" px-1 mb-5 text-sm text-red-600  cursor-pointer w-fit"
+          @click="resetAllFilters"
+          v-if="
+            sizeSelectedList.length > 0 ||
+            colorsSelectedObj != null ||
+            subCategoriesChecked.length > 0
+          "
+        >
+          Reset Filter
+        </div>
         <h1>Category</h1>
         <ul class="my-5">
           <li
@@ -95,7 +106,7 @@
           </li>
         </ul>
       </div>
-      <div
+      <!-- <div
         class="p-2 px-3 mb-5 text-sm border rounded cursor-pointer w-fit"
         @click="resetAllFilters"
         v-if="
@@ -105,7 +116,7 @@
         "
       >
         Reset Filter
-      </div>
+      </div> -->
     </div>
     <div class="relative w-[82%] h-full pt-8 overflow-auto top-20 sm:w-full">
       <div
@@ -270,17 +281,6 @@
                   {{ size.name }}
                 </li>
               </ul>
-            </div>
-            <div
-              class="p-2 px-3 mb-5 text-sm border rounded cursor-pointer w-fit"
-              @click="resetAllFilters"
-              v-if="
-                sizeSelectedList.length > 0 ||
-                colorsSelectedObj != null ||
-                subCategoriesChecked.length > 0
-              "
-            >
-              Reset Filter
             </div>
           </div>
         </div>

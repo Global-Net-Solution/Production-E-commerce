@@ -23,7 +23,7 @@ const store = createStore({
     },
     setfilterByColor(state, value) {
       state.filterByColor = value;
-      localStorage.setItem("filterByColor", JSON.stringify(value));
+      // localStorage.setItem("filterByColor", JSON.stringify(value));
     },
     SET_PAGE_SIZE: (state, pageSize) => (state.pageSize = pageSize),
     SET_SKIP_PAGE: (state, skipPage) => (state.skipPage = skipPage),
