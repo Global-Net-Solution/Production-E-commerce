@@ -27,7 +27,7 @@
       <img
         :src="getImageUrl(selectedImg)"
         alt="product-Img"
-        class="object-contain w-full h-full"
+        class="object-contain w-full h-auto"
       />
     </div>
   </div>

@@ -9,7 +9,10 @@
     <div class="w-full px-8 py-20 sm:px-0 sm:py-0">
       <div class="flex items-center justify-between px-20 mb-5 sm:px-2">
         <h2 class="text-2xl font-semibold sm:text-base">Today’s Deals</h2>
-        <router-link to="/products" @click="goToProducts" class="text-sm text-primary-100"
+        <router-link
+          to="/products"
+          @click="goToProducts"
+          class="text-sm text-primary-100"
           >See More</router-link
         >
       </div>
@@ -31,12 +34,13 @@ export default {
     imgSlider,
     productSlider,
   },
-  methods:{
-    goToProducts(){
+  methods: {
+    goToProducts() {
       this.$store.dispatch("setfilterBySubCategory", null);
+      localStorage.clear("filterBySubCategory");
       this.$store.dispatch("setfilterByColor", null);
-    }
-  }
+    },
+  },
 };
 </script>
 

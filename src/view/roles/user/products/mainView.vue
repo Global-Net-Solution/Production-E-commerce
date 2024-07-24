@@ -16,7 +16,7 @@
           ></KInput>
         </div> -->
         <div
-          class=" px-1 mb-5 text-sm text-red-600  cursor-pointer w-fit"
+          class="px-1 mb-5 text-sm text-red-600 cursor-pointer w-fit"
           @click="resetAllFilters"
           v-if="
             sizeSelectedList.length > 0 ||
@@ -144,6 +144,19 @@
         </div>
       </div>
       <div
+        class="w-full flex items-center justify-center flex-col relative top-20"
+        v-if="filteredProducts.length == 0"
+      >
+        <i class="fa-solid fa-filter-circle-xmark text-6xl text-[#C0C0C0]"></i>
+        <h1 class="text-xl font-semibold sm:text-base sm:text-center sm:mt-1">
+          We couldn't find any item that match your filter criteria.
+        </h1>
+        <p class="text-xs mt-2 sm:text-center sm:mt-1 opacity-50">
+          Try adjusting your filters: You may find what you're looking for by
+          changing your filters
+        </p>
+      </div>
+      <div
         class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0 mt-14"
       >
         <card
@@ -175,19 +188,6 @@
           @pagechange="handlePageChange"
         >
         </pager>
-      </div>
-      <div
-        class="w-full flex items-center justify-center flex-col"
-        v-if="filteredProducts.length == 0"
-      >
-        <i class="fa-solid fa-filter-circle-xmark text-6xl text-[#C0C0C0]"></i>
-        <h1 class="text-xl font-semibold">
-          We couldn't find any item that match your filter criteria.
-        </h1>
-        <p class="text-xs mt-2">
-          Try adjusting your filters: You may find what you're looking for by
-          changing your filters
-        </p>
       </div>
     </div>
     <transition name="fade">
@@ -350,7 +350,7 @@ export default {
   },
 
   mounted() {
-    if (this.$store.getters.getfilterBySubCategory != null) {
+    if (localStorage.getItem("filterBySubCategory") != null) {
       this.$store.dispatch(
         "setfilterBySubCategory",
         JSON.parse(localStorage.getItem("filterBySubCategory"))
@@ -363,6 +363,7 @@ export default {
     if (this.$store.getters.getfilterByColor != undefined) {
       this.colorsSelectedObj = this.$store.getters.getfilterByColor;
     }
+    
 
     this.categories = this.categories.map((category) => {
       return {

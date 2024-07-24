@@ -96,6 +96,7 @@ export default {
     GoToProducts(item) {
       this.$store.dispatch("setfilterByColor", item);
       this.$store.dispatch("setfilterBySubCategory", null);
+      localStorage.clear("filterBySubCategory");
       this.$router.push("/products");
     },
     getImageUrl(imagePath) {
@@ -113,14 +114,12 @@ export default {
       var count = 0;
       if (screenWidth > 1150) {
         count = Math.floor(screenWidth / 128);
-      }
-      else if( screenWidth > 640 && screenWidth < 1150){
+      } else if (screenWidth > 640 && screenWidth < 1150) {
         count = Math.floor(screenWidth / 96);
-      }
-      else{
+      } else {
         count = Math.floor(screenWidth / 75);
       }
-      if (count >6) {
+      if (count > 6) {
         this.pageSize = count - 3;
       } else {
         if (screenWidth < 600 && screenWidth > 400) {
