@@ -1,6 +1,6 @@
 <template>
   <div class="relative top-20">
-    <div class="px-28 sm:px-5">
+    <div class="px-28 sm:px-0">
       <HeroSection />
     </div>
     <div class="relative z-10 flex justify-center w-full sm:px-10">
