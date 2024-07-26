@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-10 px-28 top-20 sm:px-5">
+  <div class="relative py-10 px-28 top-20 sm:px-5 sm:top-[50px]">
     <div class="flex w-full h-screen gap-10 sm:flex-col sm:h-auto">
       <imgPreview
         class="w-[50%]"

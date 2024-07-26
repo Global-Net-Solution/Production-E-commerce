@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-[650px] sm:min-h-[465px] w-full relative h-auto">
+  <div class="min-h-[650px] sm:min-h-[475px] w-full relative h-auto">
     <div>
       <div
         class="absolute z-10 w-8 h-8 p-1 text-center bg-white rounded-full cursor-pointer right-2 top-2"
@@ -11,7 +11,7 @@
         <i class="fa-solid fa-heart text-customRed-600"></i>
       </div>
     </div>
-    <div class="w-[390px] h-[560px] sm:w-[285px] sm:h-[380px] pl-[13px] " @click="GoToProduct(product?.id)">
+    <div class="w-[390px] h-[560px] sm:w-[340px] sm:h-[415px] pl-[13px] " @click="GoToProduct(product?.id)">
       <div class="w-full h-full">
         <img
           :src="
@@ -30,7 +30,7 @@
           <div class="flex flex-col justify-between">
             <div class="flex flex-col" v-if="discount">
               <div class="flex items-center gap-5">
-                <p class="text-sm sm:text-xs line-through text-customGray-400">
+                <p class="text-sm line-through sm:text-xs text-customGray-400">
                   ${{ product?.price }}
                 </p>
                 <p

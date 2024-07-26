@@ -14,7 +14,7 @@
     <!-- {{ size }} -->
     <Push :appear="show" v-if="animationType === 'push'">
       <div
-        class="relative z-10 flex items-center justify-center w-full gap-10 sm:gap-3 overflow-x-hidden sm:w-full sm:overflow-hidden slider px-28"
+        class="relative z-10 flex items-center justify-center w-full gap-10 overflow-x-hidden sm:gap-3 sm:w-full sm:overflow-hidden slider px-28"
         :class="{ 'flex-wrap w-full': from == 'all' }"
       >
         <!-- {{ colors.length }} -->
@@ -117,15 +117,16 @@ export default {
       } else if (screenWidth > 640 && screenWidth < 1150) {
         count = Math.floor(screenWidth / 96);
       } else {
-        count = Math.floor(screenWidth / 75);
+        count = Math.floor(screenWidth / 70);
       }
+      console.log(count)
       if (count > 6) {
         this.pageSize = count - 3;
       } else {
         if (screenWidth < 600 && screenWidth > 400) {
           this.pageSize = 2;
         } else if (screenWidth < 400) {
-          this.pageSize = 2;
+          this.pageSize = 3;
         } else {
           this.pageSize = count - 2;
         }

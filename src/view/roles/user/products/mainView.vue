@@ -4,17 +4,6 @@
       class="w-[18%] h-[70%] sticky top-0 right-0 overflow-auto px-8 pt-28 sm:hidden md:hidden"
     >
       <div class="w-full">
-        <!-- <div
-          class="relative flex items-center justify-between w-full mb-5 -left-2"
-        >
-          <KInput
-            :style="{ width: '100%' }"
-            :size="'small'"
-            :class="'custom-input'"
-            :placeholder="'Search Categories...'"
-            :rounded="'large'"
-          ></KInput>
-        </div> -->
         <div
           class="px-1 mb-5 text-sm text-red-600 cursor-pointer w-fit"
           @click="resetAllFilters"
@@ -106,17 +95,6 @@
           </li>
         </ul>
       </div>
-      <!-- <div
-        class="p-2 px-3 mb-5 text-sm border rounded cursor-pointer w-fit"
-        @click="resetAllFilters"
-        v-if="
-          sizeSelectedList.length > 0 ||
-          colorsSelectedObj != null ||
-          subCategoriesChecked.length > 0
-        "
-      >
-        Reset Filter
-      </div> -->
     </div>
     <div class="relative w-[82%] h-full pt-8 overflow-auto top-20 sm:w-full">
       <div
@@ -125,7 +103,7 @@
         <div
           class="flex flex-wrap items-center justify-between w-full overflow-hidden"
         >
-          <ul class="flex gap-3">
+          <ul class="flex flex-wrap gap-3">
             <li
               class="px-2 py-1 text-sm rounded-md cursor-pointer w-fit bg-customGray-200 hover:bg-customGray-300"
               v-for="item in subCategoriesChecked"
@@ -135,7 +113,7 @@
             </li>
           </ul>
           <div
-            class="flex items-center justify-end gap-3 px-3 py-2 text-xs border rounded-lg cursor-pointer w-fit"
+            class="absolute flex items-center justify-end gap-3 px-3 py-2 text-xs border rounded-lg cursor-pointer top-4 right-2 w-fit"
             @click="SideMenuTogle"
           >
             <img :src="filterIcon" alt="filter-Icon" class="w-4 h-4" />
@@ -144,14 +122,14 @@
         </div>
       </div>
       <div
-        class="w-full flex items-center justify-center flex-col relative top-20"
+        class="relative flex flex-col items-center justify-center w-full top-20"
         v-if="filteredProducts.length == 0"
       >
         <i class="fa-solid fa-filter-circle-xmark text-6xl text-[#C0C0C0]"></i>
         <h1 class="text-xl font-semibold sm:text-base sm:text-center sm:mt-1">
           We couldn't find any item that match your filter criteria.
         </h1>
-        <p class="text-xs mt-2 sm:text-center sm:mt-1 opacity-50">
+        <p class="mt-2 text-xs opacity-50 sm:text-center sm:mt-1">
           Try adjusting your filters: You may find what you're looking for by
           changing your filters
         </p>
@@ -363,7 +341,6 @@ export default {
     if (this.$store.getters.getfilterByColor != undefined) {
       this.colorsSelectedObj = this.$store.getters.getfilterByColor;
     }
-    
 
     this.categories = this.categories.map((category) => {
       return {
@@ -458,6 +435,7 @@ export default {
     },
     colorsSelected(color) {
       this.colorsSelectedObj = color;
+      this.$store.dispatch("setfilterByColor", color);
       localStorage.setItem("filterByColor", JSON.stringify(color));
     },
     sizesSelected(size) {

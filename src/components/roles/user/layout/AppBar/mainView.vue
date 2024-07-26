@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[95px] bg-white pt-5 fixed top-0 z-[9999999]">
+  <div class="w-full h-[95px] bg-white pt-5 fixed top-0 z-[9999999] sm:h-[80px]">
     <div
       class="sm:pr-0 md:pr-0 h-[30%] pb-10 pt-5 px-10 border-b flex items-center md:justify-between sm:justify-between sm:flex-row-reverse md:flex-row-reverse"
     >
@@ -61,13 +61,13 @@
         </div>
         <div v-if="SideMenuShow">
           <div
-            class="fixed left-0 z-30 w-full h-screen bg-black opacity-50 top-0"
+            class="fixed top-0 left-0 z-30 w-full h-screen bg-black opacity-50"
             @click="SideMenuTogle"
           ></div>
           <div
             class="absolute h-screen bg-white left-0 top-0 z-[999] w-[265px] py-5"
           >
-            <ul class="flex gap-4 text-sm px-3 border-b pb-5" v-if="!showItems">
+            <ul class="flex gap-4 px-3 pb-5 text-sm border-b" v-if="!showItems">
               <li>
                 <router-link to="/products" class="flex items-center"
                   >All</router-link
@@ -83,8 +83,8 @@
                 }}</router-link>
               </li> -->
             </ul>
-            <div class="text-sm border-b pb-5 px-10" v-if="showItems">
-              <div class="w-1/2 flex justify-between">
+            <div class="px-10 pb-5 text-sm border-b" v-if="showItems">
+              <div class="flex justify-between w-1/2">
                 <div @click="BackToCat">
                   <i class="fa-solid fa-chevron-left"></i>
                 </div>

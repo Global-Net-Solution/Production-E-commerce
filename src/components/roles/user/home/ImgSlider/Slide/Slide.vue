@@ -1,18 +1,18 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center"
+    class="flex flex-col items-center justify-center"
     @click="$router.push('/category/' + id)"
   >
     <div v-if="!isImageLoaded">
-      <div class="animate-pulse flex space-x-4">
-        <div class="rounded-full w-32 h-32 bg-primary-600"></div>
+      <div class="flex space-x-4 animate-pulse">
+        <div class="w-32 h-32 rounded-full bg-primary-600"></div>
       </div>
     </div>
     <div>
       <avatar
         :rounded="'full'"
         :type="'image'"
-        class="!w-32 !h-32 flex justify-center items-center cursor-pointer sm:!w-[75px] sm:!h-[75px] md:!w-24 md:!h-24"
+        class="!w-32 !h-32 flex justify-center items-center cursor-pointer sm:!w-[70px] sm:!h-[70px] md:!w-24 md:!h-24"
         :class="{ hidden: !isImageLoaded }"
       >
         <img
@@ -27,7 +27,7 @@
       </avatar>
     </div>
     <div>
-      <h3 class="font-bold sm:text-xs mt-1 min-w-max">{{ name }}</h3>
+      <h3 class="mt-1 font-bold sm:text-xs min-w-max">{{ name }}</h3>
     </div>
   </div>
 </template>
