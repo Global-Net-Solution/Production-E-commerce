@@ -124,7 +124,7 @@ export default {
         this.pageSize = count - 3;
       } else {
         if (screenWidth < 600 && screenWidth > 400) {
-          this.pageSize = 2;
+          this.pageSize = 3;
         } else if (screenWidth < 400) {
           this.pageSize = 3;
         } else {
