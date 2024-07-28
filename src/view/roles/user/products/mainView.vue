@@ -8,7 +8,7 @@
           class="px-1 mb-5 text-sm text-red-600 cursor-pointer w-fit"
           @click="resetAllFilters"
           v-if="
-            sizeSelectedList.length > 0 ||
+            sizeSelectedObj!=null ||
             colorsSelectedObj != null ||
             subCategoriesChecked.length > 0
           "
@@ -88,7 +88,8 @@
             @click="sizesSelected(size)"
             :class="{
               'bg-black text-white hover:text-white hover:bg-black':
-                sizeSelectedList.some((ele) => ele.id === size.id),
+              sizeSelectedObj?.id == size?.id,
+
             }"
           >
             {{ size.name }}
@@ -135,7 +136,7 @@
         </p>
       </div>
       <div
-        class="flex min-h-[220px] items-center justify-center w-full gap-7 px-10 flex-wrap sm:px-0 mt-14"
+        class="flex min-h-[220px] items-center justify-center w-full  px-10 flex-wrap sm:px-0 mt-14"
       >
         <card
           class="basis-[22%] sm:basis-full sm:flex sm:justify-center"
@@ -253,7 +254,7 @@
                   @click="sizesSelected(size)"
                   :class="{
                     'bg-black text-white hover:text-white hover:bg-black':
-                      sizeSelectedList.some((ele) => ele.id === size.id),
+                    sizeSelectedObj?.id == size?.id,
                   }"
                 >
                   {{ size.name }}
@@ -319,6 +320,7 @@ export default {
       categories: categories.mainCategories,
       subCategoriesChecked: [],
       colorsSelectedObj: null,
+      sizeSelectedObj:null,
       sizeSelectedList: [],
       colors: colors.colors,
       sizes: sizes.size,
@@ -439,21 +441,12 @@ export default {
       localStorage.setItem("filterByColor", JSON.stringify(color));
     },
     sizesSelected(size) {
-      const exists = this.sizeSelectedList?.some(
-        (sizeselected) => sizeselected.id == size.id
-      );
-      if (!exists) {
-        this.sizeSelectedList.push(size);
-      } else {
-        this.sizeSelectedList = this.sizeSelectedList.filter(
-          (sizeselected) => sizeselected.id !== size.id
-        );
-      }
+      this.sizeSelectedObj = size;
     },
     resetAllFilters() {
       this.subCategoriesChecked = [];
       this.colorsSelectedObj = null;
-      this.sizeSelectedList = [];
+      this.sizeSelectedObj = null;
       this.categories.forEach((item) => {
         item.isChecked = false;
         item.isOpened = false;
@@ -504,10 +497,8 @@ export default {
         }
 
         if (
-          this.sizeSelectedList.length > 0 &&
-          !this.sizeSelectedList.some((selectedSize) =>
-            product.sizes.includes(selectedSize.id)
-          )
+          this.sizeSelectedObj != null &&
+          product.sizes.some((size) => this.sizeSelectedObj?.id === size)
         ) {
           return false;
         }

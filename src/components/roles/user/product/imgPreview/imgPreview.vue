@@ -7,7 +7,7 @@
         v-show="false"
         ><i class="fa-solid fa-chevron-down"></i
       ></base-button>
-      <ul class="flex flex-col gap-2 sm:flex-row sm:justify-center">
+      <ul class="flex flex-col gap-2 sm:flex-row sm:justify-center mt-1.5">
         <li
           class="relative w-20 cursor-pointer h-1/4"
           v-for="(img, index) in ImageListPreview.imgs"
@@ -23,11 +23,11 @@
         </li>
       </ul>
     </div>
-    <div class="w-[80%] sm:flex sm:w-full">
+    <div class="w-[70%] sm:flex sm:w-full">
       <img
         :src="getImageUrl(selectedImg)"
         alt="product-Img"
-        class="object-contain w-full h-auto"
+        class="object-contain w-full h-[-webkit-fill-available] sm:object-cover md:object-cover"
       />
     </div>
   </div>

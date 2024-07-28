@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[95px] bg-white pt-5 fixed top-0 z-[9999999] sm:h-[80px]">
+  <div class="w-full h-[80px] bg-white pt-5 fixed top-0 z-[9999999] sm:h-[80px]">
     <div
       class="sm:pr-0 md:pr-0 h-[30%] pb-10 pt-5 px-10 border-b flex items-center md:justify-between sm:justify-between sm:flex-row-reverse md:flex-row-reverse"
     >

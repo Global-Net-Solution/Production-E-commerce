@@ -1,20 +1,22 @@
 <template>
-  <div class="flex items-center justify-center w-full">
+  <div class="flex items-center justify-start w-full">
     <Push :appear="show" v-if="animationType === 'push'">
-      <div
-        class="flex items-center justify-center w-[100%] gap-4 px-10 flex-wrap sm:px-0"
-      >
-        <card
-          v-for="(product, inx) in paginatedProducts"
-          :key="inx"
-          class="basis-[19%] sm:basis-full flex justify-center"
-          :id="product.id"
-          :img="getImageUrl(product.src)"
-          :name="product.name"
-          :price="product.price"
-          :discount="product.discount"
-          :product="product"
-        />
+      <div class="flex items-center justify-center w-full">
+        <div
+          class="flex items-center justify-center w-[100%] px-10 flex-wrap sm:px-0"
+        >
+            <card
+              v-for="(product, inx) in paginatedProducts"
+              :key="inx"
+              class="sm:basis-full flex justify-center"
+              :id="product.id"
+              :img="getImageUrl(product.src)"
+              :name="product.name"
+              :price="product.price"
+              :discount="product.discount"
+              :product="product"
+            />
+        </div>
       </div>
     </Push>
   </div>

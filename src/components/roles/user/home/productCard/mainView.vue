@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-[650px] sm:min-h-[475px] w-full relative h-auto">
+  <div class="min-h-[650px] sm:min-h-[475px]  relative h-auto">
     <div>
       <div
         class="absolute z-10 w-8 h-8 p-1 text-center bg-white rounded-full cursor-pointer right-2 top-2"
